@@ -1,59 +1,63 @@
 import React, { useRef } from "react";
 import {
-  Home,
-  ChefHat,
   Hammer,
   Paintbrush,
-  Zap,
-  DoorOpen,
+  Sparkles,
+  Droplets,
+  Layers,
+  Wrench,
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { motion, useInView } from "framer-motion";
 
 const ServicesSection = () => {
   const services = [
     {
-      icon: Home,
-      title: "Reformas integrales / parciales",
-      description:
-        "Transformación completa de espacios, desde reformas integrales hasta intervenciones parciales específicas.",
-    },
-    {
-      icon: ChefHat,
-      title: "Cocinas y baños",
-      description:
-        "Diseño y reforma de cocinas modernas y baños funcionales, optimizando cada metro cuadrado.",
-    },
-    {
       icon: Hammer,
-      title: "Suelos, tarimas, puertas",
+      title: "Instalación de suelos de madera y tarima",
       description:
-        "Instalación de pavimentos, tarimas flotantes y puertas de interior y exterior de alta calidad.",
+        "Montaje profesional de parquet y tarima (maciza, multicapa, flotante) con acabados de alto nivel.",
+    },
+    {
+      icon: Wrench,
+      title: "Acuchillado y restauración de parquet",
+      description:
+        "Recuperamos suelos dañados: eliminamos rayas y desgastes para devolver el aspecto original.",
     },
     {
       icon: Paintbrush,
-      title: "Pintura y pladur",
+      title: "Lijado y barnizado al agua",
       description:
-        "Acabados perfectos en pintura y trabajos de pladur para divisiones y techos decorativos.",
+        "Barnices al agua, bajos en olor y alta resistencia. Protección duradera y acabado natural.",
     },
     {
-      icon: Zap,
-      title: "Electricidad y gestión",
+      icon: Sparkles,
+      title: "Pulido de suelos de madera",
       description:
-        "Instalaciones eléctricas completas y gestión integral de todos los aspectos técnicos.",
+        "Pulido fino para renovar el brillo y la uniformidad sin afectar el espesor de la madera.",
     },
     {
-      icon: DoorOpen,
-      title: "Ventanas y cerramientos",
+      icon: Droplets,
+      title: "Aceitado y mantenimiento",
       description:
-        "Instalación de ventanas de PVC, aluminio y cerramientos para mejorar el aislamiento.",
+        "Tratamientos con aceites y ceras que realzan la veta y protegen frente al uso diario.",
+    },
+    {
+      icon: Layers,
+      title: "Suelos laminados y composite",
+      description:
+        "Instalación de laminados y tarimas composite: estética madera, alta durabilidad y fácil cuidado.",
     },
   ];
 
   return (
-    <section id="servicios" className="min-h-screen bg-white flex items-center">
+    <section
+      id="servicios"
+      className="min-h-dvh bg-background flex items-center"
+    >
       <div className="container mx-auto px-6 py-20">
         <AnimatedSection animation="fade">
           <div className="text-center mb-16">
@@ -61,7 +65,7 @@ const ServicesSection = () => {
               Servicios principales
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Soluciones completas para tu hogar
+              Soluciones profesionales para tus suelos
             </h3>
           </div>
         </AnimatedSection>
@@ -70,7 +74,7 @@ const ServicesSection = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <AnimatedSection key={index} animation="fade" delay={index * 0.1}>
-                <div className="glass-card rounded-2xl p-8 h-full cursor-pointer">
+                <div className="glass-card rounded-2xl p-8 h-full cursor-pointer group">
                   <div className="mb-6 text-center">
                     <IconWithRotateInView>
                       <service.icon className="w-8 h-8 text-white" />
@@ -91,13 +95,17 @@ const ServicesSection = () => {
         <AnimatedSection animation="slideUp" delay={0.6}>
           <div className="text-center mt-12">
             <Link to="/servicios">
-              <button className="group flex items-center justify-center mx-auto glass-button-dark bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium shadow-glass border-0">
+              <Button
+                size="lg"
+                className="group flex items-center justify-center mx-auto glass-button-cararra px-6 py-4 md:px-10 md:py-6 text-base md:text-lg font-semibold rounded-lg border-0 w-full md:w-auto"
+              >
                 <span>Ver todos los servicios</span>
                 <ArrowRight
-                  size={22}
-                  className="ml-2 sm:opacity-0 sm:translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 opacity-100 translate-x-0 transition-all duration-300 ease-out"
+                  size={18}
+                  className="ml-2 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"
+                  aria-hidden="true"
                 />
-              </button>
+              </Button>
             </Link>
           </div>
         </AnimatedSection>
@@ -112,10 +120,35 @@ function IconWithRotateInView({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ rotate: -180, opacity: 0 }}
-      animate={isInView ? { rotate: 0, opacity: 1 } : {}}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto"
+      initial={{ rotate: -180, opacity: 0, scale: 0.5 }}
+      animate={
+        isInView
+          ? {
+              rotate: 0,
+              opacity: 1,
+              scale: 1,
+              transition: {
+                type: "spring",
+                stiffness: 200,
+                damping: 10,
+                duration: 0.8,
+              },
+            }
+          : {}
+      }
+      className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto group-hover:bg-[#74bd51] transition-colors duration-300"
+      whileHover={{
+        scale: [1, 1.2, 1],
+        transition: {
+          duration: 0.6,
+          times: [0, 0.5, 1],
+          ease: "easeInOut",
+        },
+      }}
+      whileTap={{
+        scale: 0.95,
+        transition: { duration: 0.1 },
+      }}
     >
       {children}
     </motion.div>

@@ -33,13 +33,16 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-dvh flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Proyecto no encontrado
+            Trabajo no encontrado
           </h1>
-          <Link to="/proyectos" className="text-primary hover:underline">
-            Volver a proyectos
+          <Link
+            to="/nuestros-trabajos"
+            className="text-primary hover:underline"
+          >
+            Volver a trabajos
           </Link>
         </div>
       </div>
@@ -49,10 +52,10 @@ const ProjectDetail = () => {
   // Usar las imágenes del proyecto para la galería
   const galleryImages = project.images || [project.image];
 
-  const pageTitle = `${project.title} | Proyecto de reforma en Madrid | LLEMY Reformas`;
+  const pageTitle = `${project.title} | Trabajo de reforma en Madrid | Easywood`;
   const pageDescription =
     project.description ||
-    "Proyecto de reforma integral realizado por LLEMY en Madrid.";
+    "Trabajo de reforma integral realizado por Easywood en Madrid.";
 
   return (
     <HelmetProvider>
@@ -61,19 +64,19 @@ const ProjectDetail = () => {
         <meta name="description" content={pageDescription} />
         <meta
           name="keywords"
-          content="proyecto, reforma, Madrid, caso de éxito, empresa de reformas, detalle"
+          content="trabajo, reforma, Madrid, caso de éxito, empresa de reformas, detalle"
         />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`https://llemy.com/proyectos/${project.slug}`}
+          content={`https://easywood.es/nuestros-trabajos/${project.slug}`}
         />
         <meta property="og:image" content={project.image} />
         <link
           rel="canonical"
-          href={`https://llemy.com/proyectos/${project.slug}`}
+          href={`https://easywood.es/nuestros-trabajos/${project.slug}`}
         />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">{`
@@ -83,154 +86,154 @@ const ProjectDetail = () => {
             "name": "${project.title}",
             "description": "${pageDescription}",
             "image": "${project.image}",
-            "url": "https://llemy.com/proyectos/${project.slug}",
+            "url": "https://easywood.es/nuestros-trabajos/${project.slug}",
             "brand": {
               "@type": "Organization",
-              "name": "LLEMY Reformas & Construcciones"
+              "name": "Easywood"
             },
             "areaServed": "Madrid, España"
           }
         `}</script>
       </Helmet>
-      <div className="min-h-screen">
-        <Navigation />
-        <main id="main-content" className="pt-24 pb-20">
-          {/* Breadcrumb */}
-          <div className="container mx-auto px-6 mb-8">
-            <nav aria-label="Breadcrumb">
-              <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-                <li>
-                  <Link to="/" className="hover:text-primary">
-                    Inicio
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li>
-                  <Link to="/proyectos" className="hover:text-primary">
-                    Proyectos
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li aria-current="page">
-                  <span className="text-primary">{project.title}</span>
-                </li>
-              </ol>
-            </nav>
-          </div>
+      <div className="min-h-dvh">
+        {/* Breadcrumb */}
+        <div className="container mx-auto px-6 mb-8">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <li>
+                <Link to="/" className="hover:text-primary">
+                  Inicio
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/nuestros-trabajos" className="hover:text-primary">
+                  Trabajos
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page">
+                <span className="text-primary">{project.title}</span>
+              </li>
+            </ol>
+          </nav>
+        </div>
 
-          {/* Back Button */}
-          <div className="container mx-auto px-6 mb-8">
-            <button
-              onClick={() => navigate("/proyectos")}
-              className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
-              aria-label="Volver a la página de proyectos"
-            >
-              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              <span>Volver a proyectos</span>
-            </button>
-          </div>
+        {/* Back Button */}
+        <div className="container mx-auto px-6 mb-8">
+          <button
+            onClick={() => navigate("/nuestros-trabajos")}
+            className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
+            aria-label="Volver a la página de trabajos"
+          >
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+            <span>Volver a trabajos</span>
+          </button>
+        </div>
 
-          {/* Hero Section */}
-          <div className="container mx-auto px-6 mb-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="mb-4">
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
-                    {project.year}
-                  </span>
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                  {project.title}
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  {project.description}
-                </p>
+        {/* Hero Section */}
+        <div className="container mx-auto px-6 mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="mb-4">
+                <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
+                  {project.year}
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+                {project.title}
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8">
+                {project.description}
+              </p>
 
-                {/* Project Info */}
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="w-5 h-5 text-primary" aria-hidden="true" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Ubicación</p>
-                      <p className="font-medium">{project.location}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Ruler className="w-5 h-5 text-primary" aria-hidden="true" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">
-                        Superficie
-                      </p>
-                      <p className="font-medium">{project.area}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Calendar className="w-5 h-5 text-primary" aria-hidden="true" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Año</p>
-                      <p className="font-medium">{project.year}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Clock className="w-5 h-5 text-primary" aria-hidden="true" />
-                    <div>
-                      <p className="text-sm text-muted-foreground">Duración</p>
-                      <p className="font-medium">
-                        {project.duration || "No especificada"}
-                      </p>
-                    </div>
+              {/* Project Info */}
+              <div className="grid grid-cols-2 gap-6">
+                <div className="flex items-center space-x-3">
+                  <MapPin className="w-5 h-5 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Ubicación</p>
+                    <p className="font-medium">{project.location}</p>
                   </div>
                 </div>
-
-                {/* Services */}
-                {project.services && project.services.length > 0 && (
-                  <div className="mt-8">
-                    <h3 className="text-lg font-semibold text-primary mb-4">
-                      Servicios realizados
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {project.services.map((service, index) => (
-                        <span
-                          key={index}
-                          className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
-                        >
-                          {service}
-                        </span>
-                      ))}
-                    </div>
+                <div className="flex items-center space-x-3">
+                  <Ruler className="w-5 h-5 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Superficie</p>
+                    <p className="font-medium">{project.area}</p>
                   </div>
-                )}
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Calendar
+                    className="w-5 h-5 text-primary"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Año</p>
+                    <p className="font-medium">{project.year}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Clock className="w-5 h-5 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">Duración</p>
+                    <p className="font-medium">
+                      {project.duration || "No especificada"}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-96 object-cover rounded-lg shadow-lg"
-                />
+              {/* Services */}
+              {project.services && project.services.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="text-lg font-semibold text-primary mb-4">
+                    Servicios realizados
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {project.services.map((service, index) => (
+                      <span
+                        key={index}
+                        className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-96 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Description Section */}
+        {project.detailedDescription && (
+          <div className="py-16 bg-white">
+            <div className="container mx-auto px-6">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+                  Detalles del Trabajo
+                </h2>
+                <div className="prose prose-lg max-w-none">
+                  <div className="whitespace-pre-line text-muted-foreground leading-relaxed text-center lg:text-left lg:max-w-3xl lg:mx-auto">
+                    {project.detailedDescription}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        )}
 
-          {/* Detailed Description Section */}
-          {project.detailedDescription && (
-            <div className="py-16 bg-white">
-              <div className="container mx-auto px-6">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="text-3xl font-bold text-primary mb-8 text-center">
-                    Detalles del Proyecto
-                  </h2>
-                  <div className="prose prose-lg max-w-none">
-                    <div className="whitespace-pre-line text-muted-foreground leading-relaxed text-center lg:text-left lg:max-w-3xl lg:mx-auto">
-                      {project.detailedDescription}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Testimonial Section */}
+        {/* Testimonial Section */}
+        {project.testimonial && (
           <div className="py-16 bg-muted/30">
             <div className="container mx-auto px-6">
               <div className="max-w-3xl mx-auto text-center">
@@ -239,7 +242,7 @@ const ProjectDetail = () => {
                 </h2>
                 <div className="bg-white rounded-lg shadow-sm p-8">
                   <div className="flex justify-center mb-6">
-                    {[...Array(5)].map((_, i) => (
+                    {[...Array(project.testimonial.rating || 5)].map((_, i) => (
                       <svg
                         key={i}
                         className="w-6 h-6 text-yellow-400 fill-current"
@@ -250,73 +253,69 @@ const ProjectDetail = () => {
                     ))}
                   </div>
                   <blockquote className="text-xl text-muted-foreground mb-6 italic">
-                    "Estamos muy satisfechos con el trabajo realizado por Llemy
-                    Reformas. La transformación de nuestro espacio superó todas
-                    nuestras expectativas. El equipo fue profesional, puntual y
-                    el resultado final es simplemente espectacular."
+                    “{project.testimonial.text}”
                   </blockquote>
                   <p className="font-semibold text-primary">
-                    - Cliente Satisfecho
+                    - {project.testimonial.author}
                   </p>
                 </div>
               </div>
             </div>
           </div>
+        )}
 
-          {/* Gallery Section */}
-          {galleryImages.length > 1 && (
-            <div className="bg-white py-16">
-              <div className="container mx-auto px-6">
-                <h2 className="text-3xl font-bold text-primary text-center mb-12">
-                  Galería del Proyecto
-                </h2>
-                <ImageGallery images={galleryImages} title={project.title} />
-              </div>
+        {/* Gallery Section */}
+        {galleryImages.length > 1 && (
+          <div className="bg-white py-16">
+            <div className="container mx-auto px-6">
+              <h2 className="text-3xl font-bold text-primary text-center mb-12">
+                Galería del Trabajo
+              </h2>
+              <ImageGallery images={galleryImages} title={project.title} />
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Enhanced CTA Section - Full Viewport */}
-          <div className="bg-gradient-to-r from-primary via-primary/90 to-primary text-white min-h-screen flex items-center">
-            <div className="container mx-auto px-6 text-center w-full">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  ¿Te gustó este proyecto?
-                </h2>
-                <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-                  Podemos crear algo similar para tu hogar. Nuestro equipo de
-                  expertos está listo para transformar tu espacio con la misma
-                  calidad y atención al detalle.
+        {/* Enhanced CTA Section - Full Viewport */}
+        <div className="bg-gradient-to-r from-primary via-primary/90 to-primary text-white min-h-dvh flex items-center">
+          <div className="container mx-auto px-6 text-center w-full">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                ¿Te gustó este trabajo?
+              </h2>
+              <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Podemos crear algo similar para tu hogar. Nuestro equipo de
+                expertos está listo para transformar tu espacio con la misma
+                calidad y atención al detalle.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Link
+                  to="/contacto"
+                  className="inline-flex items-center space-x-3 bg-white text-primary px-8 py-4 rounded-lg hover:bg-white/90 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Solicitar consulta gratuita</span>
+                </Link>
+
+                <a
+                  href="tel:+34123456789"
+                  className="inline-flex items-center space-x-3 border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Llamar ahora</span>
+                </a>
+              </div>
+
+              <div className="mt-8 text-white/80">
+                <p className="text-sm">
+                  ✓ Consulta gratuita • ✓ Presupuesto sin compromiso • ✓
+                  Garantía de calidad
                 </p>
-
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                  <Link
-                    to="/contacto"
-                    className="inline-flex items-center space-x-3 bg-white text-primary px-8 py-4 rounded-lg hover:bg-white/90 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                    <Mail className="w-5 h-5" />
-                    <span>Solicitar consulta gratuita</span>
-                  </Link>
-
-                  <a
-                    href="tel:+34123456789"
-                    className="inline-flex items-center space-x-3 border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
-                  >
-                    <Phone className="w-5 h-5" />
-                    <span>Llamar ahora</span>
-                  </a>
-                </div>
-
-                <div className="mt-8 text-white/80">
-                  <p className="text-sm">
-                    ✓ Consulta gratuita • ✓ Presupuesto sin compromiso • ✓
-                    Garantía de calidad
-                  </p>
-                </div>
               </div>
             </div>
           </div>
-        </main>
-        <Footer />
+        </div>
       </div>
     </HelmetProvider>
   );

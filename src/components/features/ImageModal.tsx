@@ -1,7 +1,6 @@
-
-import React from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Dialog, DialogContent, DialogOverlay } from '@/components/ui/dialog';
+import React from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -20,23 +19,23 @@ const ImageModal: React.FC<ImageModalProps> = ({
   currentIndex,
   onPrevious,
   onNext,
-  title
+  title,
 }) => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowLeft') onPrevious();
-    if (e.key === 'ArrowRight') onNext();
-    if (e.key === 'Escape') onClose();
+    if (e.key === "ArrowLeft") onPrevious();
+    if (e.key === "ArrowRight") onNext();
+    if (e.key === "Escape") onClose();
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogOverlay className="backdrop-blur-md bg-black/20" />
-      <DialogContent 
-        className="max-w-6xl w-full h-full max-h-[90vh] p-0 border-0 bg-transparent"
+      <DialogContent
+        className="max-w-6xl w-full h-full max-h-[90dvh] p-0 border-0 bg-transparent"
         onKeyDown={handleKeyDown}
         role="dialog"
         aria-modal="true"
-        aria-label={`Galería de imágenes: ${title || 'Proyecto'}`}
+        aria-label={`Galería de imágenes: ${title || "Proyecto"}`}
       >
         <div className="relative w-full h-full flex items-center justify-center">
           {/* Close Button */}
@@ -73,14 +72,16 @@ const ImageModal: React.FC<ImageModalProps> = ({
           {/* Image */}
           <img
             src={images[currentIndex]}
-            alt={`${title || 'Proyecto'} - Imagen ${currentIndex + 1} de ${images.length}`}
+            alt={`${title || "Proyecto"} - Imagen ${currentIndex + 1} de ${
+              images.length
+            }`}
             className="max-w-full max-h-full object-contain"
             role="img"
           />
 
           {/* Image Counter */}
           {images.length > 1 && (
-            <div 
+            <div
               className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 backdrop-blur-sm bg-white/10 border border-white/20 text-white rounded-full text-sm"
               aria-live="polite"
               aria-label={`Imagen ${currentIndex + 1} de ${images.length}`}

@@ -40,7 +40,7 @@ const CompanyProcessSection = () => {
               Nuestro Proceso
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Metodología probada en más de 340 proyectos
+              Metodología probada en más de 200 proyectos
             </h3>
           </div>
         </AnimatedSection>

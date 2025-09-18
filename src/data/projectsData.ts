@@ -16,6 +16,11 @@ export interface Project {
   services?: string[];
   duration?: string;
   budget?: string;
+  testimonial?: {
+    text: string;
+    author: string;
+    rating?: number;
+  };
 }
 
 export interface FilterOption {
@@ -24,206 +29,193 @@ export interface FilterOption {
 }
 
 export const projects: Project[] = [
+  // Madrid – Lijado/barnizado al agua
   {
     id: 1,
-    slug: "reforma-integral-pirineos",
-    image: "/images/Fotos Obras LLemy/Pirineos/pirineos1.JPG",
+    slug: "lijado-barnizado-al-agua-madrid",
+    image:
+      "/images/trabajos/madrid/Acuchillado-lijado-y-barnizado-con-barniz-al-agua-en-Madrid.jpg",
     images: [
-      "/images/Fotos Obras LLemy/Pirineos/pirineos1.JPG",
-      "/images/Fotos Obras LLemy/Pirineos/pirineos2.JPG",
-      "/images/Fotos Obras LLemy/Pirineos/pirineos3.JPG",
-      "/images/Fotos Obras LLemy/Pirineos/pirineos4.JPG",
+      "/images/trabajos/madrid/Acuchillado-lijado-y-barnizado-con-barniz-al-agua-en-Madrid.jpg",
+      "/images/trabajos/madrid/Lijado-y-barnizado-con-barniz-al-agua-en-Madrid-1.jpg",
     ],
-    title: "Reforma Integral en Pirineos",
-    type: "Reforma integral",
-    category: "salon",
+    title: "Lijado y barnizado al agua",
+    type: "Tratamiento de parquet",
+    category: "lijado-barnizado",
     location: "Madrid",
-    area: "85m²",
-    year: "2024",
-    description: "Reforma completa de salón con diseño moderno y funcional",
-    detailedDescription: `
-      Esta reforma integral transformó completamente un salón de 85m² en Madrid. 
-      El proyecto incluyó la renovación completa del espacio, desde la instalación eléctrica hasta 
-      los acabados finales. Se implementó un diseño moderno que maximiza la funcionalidad y la 
-      estética del espacio, creando un ambiente acogedor y contemporáneo perfecto para el día a día 
-      de la familia.
-      
-      Los trabajos realizados incluyeron la renovación de suelos, pintura de paredes y techos, 
-      instalación de nueva iluminación LED, renovación de carpintería y la creación de espacios 
-      de almacenamiento integrados. El resultado es un salón completamente renovado que combina 
-      elegancia y funcionalidad.
-    `,
-    beforeImages: ["/images/Fotos Obras LLemy/Pirineos/pirineos1.JPG"],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Pirineos/pirineos2.JPG",
-      "/images/Fotos Obras LLemy/Pirineos/pirineos3.JPG",
-    ],
-    services: [
-      "Diseño de interiores",
-      "Reforma integral",
-      "Instalación eléctrica",
-    ],
-    duration: "3 semanas",
-    budget: "25.000€ - 35.000€",
+    area: "95 m²",
+    year: "2025",
+    description:
+      "Lijado y barnizado al agua de parquet: acabado no tóxico, sin olor y que respeta el color natural. Varias capas para alta resistencia y protección frente a rozaduras y manchas.",
+    detailedDescription:
+      "Tratamiento de restauración de parquet que incluye acuchillado y lijado integral con maquinaria profesional libre de polvo, sellado de juntas y aplicación de barniz al agua en 2–3 capas con tiempos de secado controlados. Recomendado como mantenimiento cada ~10 años según uso. Ideal para viviendas y oficinas por su baja emisión de olores, bajo COV y secado rápido. Incluye protección de zócalos y mobiliario, y limpieza final.",
+    services: ["Acuchillado", "Lijado", "Barnizado al agua"],
+    duration: "3 días",
+    budget: "A medida según m² y estado inicial",
+    testimonial: {
+      text: "Excelente acabado al agua, sin olores y con un brillo natural. El suelo parece nuevo.",
+      author: "Familia López (Madrid)",
+      rating: 5,
+    },
   },
+  // Pozuelo – Acuchillado de tarima merbau
   {
     id: 2,
-    slug: "cocina-contemporanea-aquitania",
-    image: "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0010.webp",
+    slug: "acuchillado-tarima-merbau-pozuelo",
+    image:
+      "/images/trabajos/pozuelo/acuchillado-de-tarima-merbau-en-Pozuelo.jpg",
     images: [
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0010.webp",
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0011.webp",
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0013.webp",
+      "/images/trabajos/pozuelo/acuchillado-de-tarima-merbau-en-Pozuelo.jpg",
+      "/images/trabajos/pozuelo/Lijado-y-barnizado-de-tarima-en-Pozuelo-1.jpg",
     ],
-    title: "Cocina Contemporánea Aquitania",
-    type: "Diseño de interiores",
-    category: "cocina",
-    location: "Madrid Centro",
-    area: "25m²",
-    year: "2024",
+    title: "Acuchillado de tarima Merbau",
+    type: "Restauración de tarima",
+    category: "acuchillado",
+    location: "Pozuelo",
+    area: "80 m²",
+    year: "2025",
     description:
-      "Cocina moderna con isla central y electrodomésticos integrados",
-    detailedDescription: `
-      Esta cocina contemporánea de 25m² en el centro de Madrid representa la perfecta combinación 
-      entre funcionalidad y diseño moderno. El proyecto incluyó la instalación de una isla central 
-      que sirve tanto como zona de preparación como de comedor informal, creando un espacio 
-      multifuncional ideal para la vida moderna.
-      
-      Se instalaron muebles de alta calidad con acabados lacados, electrodomésticos integrados 
-      de última generación, y una iluminación LED que realza cada detalle del espacio. La 
-      paleta de colores neutros y los materiales seleccionados crean un ambiente elegante y 
-      atemporal que se adapta perfectamente al estilo de vida de los propietarios.
-    `,
-    beforeImages: [
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0010.webp",
-    ],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0011.webp",
-      "/images/Fotos Obras LLemy/Aquitania/IMG-20241220-WA0013.webp",
-    ],
-    services: [
-      "Diseño de cocina",
-      "Instalación de muebles",
-      "Electrodomésticos",
-    ],
-    duration: "2 semanas",
-    budget: "15.000€ - 25.000€",
+      "Acuchillado profesional de tarima Merbau: eliminamos golpes y arañazos, nivelamos y dejamos la superficie lista para el acabado deseado (agua, aceite o poliuretano).",
+    detailedDescription:
+      "Servicio completo de acuchillado y lijado de tarima tropical Merbau. Inspección inicial de juntas y tableros, fijación de piezas sueltas, masillado con polvo de lijado, nivelado progresivo (granulometría 36→60→100) y preparación para el sistema de acabado elegido (agua/aceite/poliuretano). Planificación por estancias para mantener la vivienda operativa. Limpieza técnica y recomendaciones de mantenimiento.",
+    services: ["Acuchillado", "Lijado", "Barnizado"],
+    duration: "4 días",
+    budget: "A medida según m² y acabado elegido",
+    testimonial: {
+      text: "Recuperaron nuestra tarima Merbau y eliminaron todas las marcas. Trabajo muy fino y puntual.",
+      author: "Carlos y Ana (Pozuelo)",
+      rating: 5,
+    },
   },
+  // Villanueva – Instalación de tarima composite
   {
     id: 3,
-    slug: "bano-minimalista-pardinas",
-    image: "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0001.jpg",
+    slug: "instalacion-tarima-composite-villanueva",
+    image:
+      "/images/trabajos/Villanueva/instalacion-tarima-composite-exterior-terraza.jpg",
     images: [
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0001.jpg",
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0002.jpg",
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0003.jpg",
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0004.jpg",
+      "/images/trabajos/Villanueva/instalacion-tarima-composite-exterior-terraza.jpg",
+      "/images/trabajos/Villanueva/instalacion-tarima-composite-vivienda-madrid.jpg",
+      "/images/trabajos/Villanueva/instalacion-vivienda-tarima-composite.jpg",
     ],
-    title: "Baño Minimalista Pardiñas",
-    type: "Reforma completa",
-    category: "bano",
-    location: "Getafe",
-    area: "12m²",
-    year: "2023",
-    description: "Baño con diseño minimalista y acabados de lujo",
-    beforeImages: [
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0001.jpg",
+    title: "Instalación de tarima composite",
+    type: "Instalación de suelos",
+    category: "instalacion",
+    location: "Villanueva del Pardillo (Madrid)",
+    area: "60 m² (terraza y perímetro)",
+    year: "2025",
+    description:
+      "Sustitución de antigua tarima de Ipe por tarima composite tono Ipe. Estructura con rastreles de aluminio para máxima durabilidad y mínimo mantenimiento.",
+    detailedDescription:
+      "Proyecto de renovación en Villanueva del Pardillo. Retirada de tarima de Ipe deteriorada, regularización de soporte y colocación de tarima composite con acabado imitación Ipe. Subestructura sobre rastreles de aluminio con fijación oculta y separación reglada para drenaje. Ventajas: sin pudrición, sin holguras, evita malas hierbas y reduce el mantenimiento (no requiere aceitado periódico). Entrega con limpieza y guía de cuidados.",
+    services: [
+      "Instalación de tarima composite",
+      "Estructura de rastreles de aluminio",
+      "Sustitución de tarima de madera",
+      "Acabado imitación madera Ipe",
+      "Mantenimiento bajo",
     ],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0002.jpg",
-      "/images/Fotos Obras LLemy/Pardiñas/IMG-20250208-WA0003.jpg",
-    ],
-    services: ["Reforma de baño", "Instalación sanitaria", "Acabados"],
-    duration: "1 semana",
-    budget: "8.000€ - 12.000€",
+    duration: "5 días",
+    budget: "A medida según m² y sistema de fijación",
+    testimonial: {
+      text: "El composite quedó perfecto y ya no tenemos que preocuparnos por el mantenimiento. Gran recomendación.",
+      author: "Beatriz (Villanueva del Pardillo)",
+      rating: 5,
+    },
   },
+  // Madrid – Restaurante: Acuchillado y barnizado de suelo
   {
     id: 4,
-    slug: "oficina-moderna-villalba",
-    image: "/images/Fotos Obras LLemy/Villalba/14-_DSC5537.JPG",
+    slug: "acuchillado-barnizado-restaurante-madrid",
+    image:
+      "/images/trabajos/madrid/acuchillado-barnizado-restaurante-madrid.jpg",
     images: [
-      "/images/Fotos Obras LLemy/Villalba/14-_DSC5537.JPG",
-      "/images/Fotos Obras LLemy/Villalba/15-_DSC5538.JPG",
-      "/images/Fotos Obras LLemy/Villalba/19-_DSC5546.JPG",
+      "/images/trabajos/madrid/acuchillado-barnizado-restaurante-madrid.jpg",
+      "/images/trabajos/madrid/acuchillado-barnizado-restaurante-madrid2.jpg",
+      "/images/trabajos/madrid/acuchillado-barnizado-restaurante-madrid3.jpg",
+      "/images/trabajos/madrid/acuchillado-barnizado-restaurante-madrid4.jpg",
     ],
-    title: "Oficina Moderna Villalba",
-    type: "Proyecto personalizado",
-    category: "oficina",
-    location: "Móstoles",
-    area: "150m²",
-    year: "2023",
-    description: "Oficina corporativa con espacios colaborativos y privados",
-    beforeImages: ["/images/Fotos Obras LLemy/Villalba/14-_DSC5537.JPG"],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Villalba/15-_DSC5538.JPG",
-      "/images/Fotos Obras LLemy/Villalba/19-_DSC5546.JPG",
+    title: "Acuchillado y barnizado en restaurante",
+    type: "Restauración de parquet",
+    category: "acuchillado",
+    location: "Madrid (Centro)",
+    area: "120 m² (salones y escaleras)",
+    year: "2025",
+    description:
+      "Acuchillado y barnizado del suelo de madera maciza en restaurante de Madrid. Segunda vida al pavimento sin obra, con acabado al agua resistente y sin olores.",
+    detailedDescription:
+      "El restaurante renovó el interior manteniendo la tarima maciza original. Asesoramos alternativas y optamos por restaurar: acuchillado profesional libre de polvo, lijado progresivo, masillado con polvo de madera, sellado y barnizado al agua (3 capas). Intervención en salones y escaleras; planificación por zonas para no interrumpir la actividad. Resultado: suelo como nuevo, elegante, aislante y fácil de mantener.",
+    services: [
+      "Acuchillado profesional",
+      "Lijado progresivo",
+      "Masillado y sellado",
+      "Barnizado al agua (3 capas)",
     ],
-    services: ["Diseño de oficina", "Instalaciones técnicas", "Mobiliario"],
-    duration: "6 semanas",
-    budget: "50.000€ - 80.000€",
+    duration: "4 días (planificación por zonas)",
+    budget: "A medida según m², estado y horarios del local",
+    testimonial: {
+      text: "El suelo ha recuperado su brillo y aguanta el ritmo del restaurante. Cero olores y reapertura rápida.",
+      author: "Gerente Restaurante La Esquina",
+      rating: 5,
+    },
   },
+  // Dummy – Instalación parquet roble (con SVG)
   {
     id: 5,
-    slug: "dormitorio-elegante-somontin",
-    image: "/images/Fotos Obras LLemy/Somontin/1735301655406.webp",
-    images: [
-      "/images/Fotos Obras LLemy/Somontin/1735301655406.webp",
-      "/images/Fotos Obras LLemy/Somontin/1735301655412.webp",
-      "/images/Fotos Obras LLemy/Somontin/1735301655419.webp",
-    ],
-    title: "Dormitorio Elegante Somontín",
-    type: "Diseño integral",
-    category: "dormitorio",
-    location: "Fuenlabrada",
-    area: "20m²",
-    year: "2024",
-    description: "Dormitorio principal con vestidor integrado y baño en suite",
-    beforeImages: ["/images/Fotos Obras LLemy/Somontin/1735301655406.webp"],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Somontin/1735301655412.webp",
-      "/images/Fotos Obras LLemy/Somontin/1735301655419.webp",
-    ],
-    services: ["Diseño de dormitorio", "Vestidor", "Baño en suite"],
-    duration: "2 semanas",
-    budget: "18.000€ - 28.000€",
+    slug: "instalacion-parquet-roble-dummy",
+    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
+    title: "Instalación de parquet roble europeo",
+    type: "Instalación de suelos",
+    category: "instalacion",
+    location: "Las Rozas (Madrid)",
+    area: "72 m²",
+    year: "2025",
+    description:
+      "Colocación de parquet de roble en espiga con rodapié lacado y transición oculta.",
+    detailedDescription:
+      "Replanteo de ejes y colocación en patrón espiga, adhesivo bicomponente, cepillado suave de juntas y sellado de perímetros. Entrega con limpieza de obra ligera y recomendaciones de mantenimiento.",
+    services: ["Instalación", "Parquet roble", "Rodapié lacado"],
+    duration: "3 días",
+    budget: "A medida según m² y formato de lama",
+    testimonial: {
+      text: "Trabajo limpio y rápido. Nos encanta el patrón en espiga.",
+      author: "Laura P. (Las Rozas)",
+      rating: 5,
+    },
   },
+  // Dummy – Aceitado y pulido (con SVG)
   {
     id: 6,
-    slug: "espacio-abierto-varios",
-    image:
-      "/images/Fotos Obras LLemy/Varios/0e02120d-4304-4bba-86ea-98cffbafe10b.JPG",
-    images: [
-      "/images/Fotos Obras LLemy/Varios/0e02120d-4304-4bba-86ea-98cffbafe10b.JPG",
-      "/images/Fotos Obras LLemy/Varios/14d4a894-fce0-4f7e-a39f-236e6981ebfa.JPG",
-      "/images/Fotos Obras LLemy/Varios/285261037_2340310292815754_1971170006871206130_n.JPG",
-    ],
-    title: "Espacio Abierto Varios",
-    type: "Reforma moderna",
-    category: "salon",
-    location: "Madrid",
-    area: "120m²",
-    year: "2023",
-    description: "Reforma de espacio abierto integrando cocina y salón",
-    beforeImages: [
-      "/images/Fotos Obras LLemy/Varios/0e02120d-4304-4bba-86ea-98cffbafe10b.JPG",
-    ],
-    afterImages: [
-      "/images/Fotos Obras LLemy/Varios/14d4a894-fce0-4f7e-a39f-236e6981ebfa.JPG",
-      "/images/Fotos Obras LLemy/Varios/285261037_2340310292815754_1971170006871206130_n.JPG",
-    ],
-    services: ["Reforma integral", "Diseño de espacios", "Instalaciones"],
-    duration: "4 semanas",
-    budget: "35.000€ - 50.000€",
+    slug: "aceitado-pulido-parquet-dummy",
+    image: "/placeholder.svg",
+    images: ["/placeholder.svg"],
+    title: "Pulido y aceitado de parquet",
+    type: "Mantenimiento de suelos",
+    category: "lijado-barnizado",
+    location: "Alcobendas (Madrid)",
+    area: "58 m²",
+    year: "2025",
+    description:
+      "Pulido fino y aceite natural de alto contenido en sólidos para realzar el veteado.",
+    detailedDescription:
+      "Pulido en dos pasadas, limpieza anti-polvo, aceite natural aplicado a rodillo con secado controlado y bruñido final. Mejora la resistencia y el tacto de la madera.",
+    services: ["Pulido", "Aceitado", "Mantenimiento"],
+    duration: "2 días",
+    budget: "A medida según m² y tipo de aceite",
+    testimonial: {
+      text: "El veteado ganó profundidad y el tacto es espectacular.",
+      author: "Miguel R. (Alcobendas)",
+      rating: 5,
+    },
   },
 ];
 
 export const filters: FilterOption[] = [
-  { key: "todos", label: "Todos los proyectos" },
-  { key: "salon", label: "Salones" },
-  { key: "cocina", label: "Cocinas" },
-  { key: "bano", label: "Baños" },
-  { key: "dormitorio", label: "Dormitorios" },
-  { key: "oficina", label: "Oficinas" },
+  { key: "todos", label: "Todos" },
+  { key: "instalacion", label: "Instalación" },
+  { key: "acuchillado", label: "Acuchillado" },
+  { key: "lijado-barnizado", label: "Lijado y barnizado" },
 ];
 
 // Función para obtener un proyecto por slug

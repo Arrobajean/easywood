@@ -32,8 +32,6 @@ const Contact = () => {
     nombre: "",
     email: "",
     telefono: "",
-    tipoReforma: "",
-    presupuesto: "",
     mensaje: "",
     website: "", // honeypot
   });
@@ -75,10 +73,19 @@ const Contact = () => {
     // Validación avanzada
     const errors: { [key: string]: string } = {};
     if (!formData.nombre.trim()) errors.nombre = "El nombre es obligatorio.";
-    if (!formData.email.trim() || !validateEmail(formData.email.trim()))
-      errors.email = "Email inválido.";
-    if (!formData.telefono.trim() || !validatePhone(formData.telefono.trim()))
-      errors.telefono = "Teléfono inválido.";
+    const emailProvided = !!formData.email.trim();
+    const phoneProvided = !!formData.telefono.trim();
+    if (!emailProvided && !phoneProvided) {
+      errors.email = "Proporciona email o teléfono";
+      errors.telefono = "Proporciona email o teléfono";
+    } else {
+      if (emailProvided && !validateEmail(formData.email.trim())) {
+        errors.email = "Email inválido.";
+      }
+      if (phoneProvided && !validatePhone(formData.telefono.trim())) {
+        errors.telefono = "Teléfono inválido.";
+      }
+    }
     if (!formData.mensaje.trim() || formData.mensaje.trim().length < 10)
       errors.mensaje = "El mensaje debe tener al menos 10 caracteres.";
     if (Object.keys(errors).length > 0) {
@@ -119,8 +126,6 @@ const Contact = () => {
           nombre: "",
           email: "",
           telefono: "",
-          tipoReforma: "",
-          presupuesto: "",
           mensaje: "",
           website: "",
         });
@@ -192,353 +197,450 @@ const Contact = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Contacto | Reformas integrales en Madrid | LLEMY Reformas</title>
+        <title>Contacto | EasyWood | Suelos, Tarimas y Parquet en Madrid</title>
         <meta
           name="description"
-          content="Contacta con LLEMY Reformas para tu reforma integral en Madrid. Solicita presupuesto gratuito y asesoría personalizada."
+          content="Contacta con EasyWood: especialistas en suelos de madera, tarimas y parquet en Madrid. Presupuesto gratuito y asesoría profesional."
         />
         <meta
           name="keywords"
-          content="contacto, reformas integrales, Madrid, presupuesto, asesoría, empresa de reformas"
+          content="contacto suelos madera, tarima, parquet, Madrid, presupuesto, EasyWood"
         />
         <meta
           property="og:title"
-          content="Contacto | Reformas integrales en Madrid | LLEMY Reformas"
+          content="Contacto | EasyWood | Suelos, Tarimas y Parquet en Madrid"
         />
         <meta
           property="og:description"
-          content="Solicita información o presupuesto para tu reforma en Madrid. Atención rápida y profesional."
+          content="Solicita información o presupuesto de suelos de madera, tarimas y parquet. Atención rápida y profesional."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://llemy.com/contacto" />
+        <meta property="og:url" content="https://easywood.es/contacto" />
         <meta
           property="og:image"
-          content="https://llemy.com/images/logo/logo-negro.png"
+          content="https://easywood.es/favicon/android-chrome-192x192.png"
         />
-        <link rel="canonical" href="https://llemy.com/contacto" />
+        <link rel="canonical" href="https://easywood.es/contacto" />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "LLEMY Reformas & Construcciones",
-            "description": "Empresa de reformas integrales en Madrid. Contacta para presupuesto gratuito.",
-            "url": "https://llemy.com/contacto",
-            "logo": "https://llemy.com/images/logo/logo-negro.png",
+            "name": "Easywood",
+            "description": "Empresa de reformas integrales y suelos de madera en Madrid. Contacta para presupuesto gratuito.",
+            "url": "https://easywood.es/contacto",
+            "logo": "https://easywood.es/favicon/android-chrome-192x192.png",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Calle Marqués de Zafra 25",
+              "streetAddress": "Calle de San Gumersindo 7",
               "addressLocality": "Madrid",
               "addressCountry": "ES"
             },
-            "telephone": "+34 919 930 664",
-            "email": "info@llemy.com"
+            "telephone": "+34 622 00 30 62",
+            "email": "info@easywood.es"
           }
         `}</script>
       </Helmet>
-      <div className="min-h-screen">
-        <Navigation />
-        <main id="main-content" className="pt-24 pb-20">
-          <div className="container mx-auto px-6">
-            {/* Header */}
-            <div className="text-center mb-16 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Contacta con Nosotros
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                ¿Tienes un proyecto en mente? Cuéntanos tus ideas y te
-                ayudaremos a hacerlas realidad. Solicita tu presupuesto gratuito
-                y sin compromiso.
-              </p>
-            </div>
+      <div className="min-h-dvh" style={{ paddingTop: "var(--header-height)" }}>
+        <div className="container mx-auto px-6 max-w-5xl py-16 md:py-24">
+          {/* Header */}
+          <div className="text-center mb-16 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
+              Contacto
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Cuéntanos qué necesitas para tus suelos de madera. Instalación,
+              restauración o mantenimiento: te asesoramos sin compromiso y
+              preparamos un presupuesto a medida en menos de 24&nbsp;h.
+            </p>
+          </div>
 
-            <div className="grid lg:grid-cols-2 gap-16">
-              {/* Contact Form */}
-              <div className="animate-slide-up">
-                <h2 className="text-2xl font-semibold text-primary mb-6">
-                  Solicita tu presupuesto
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Honeypot anti-spam */}
-                  <input
-                    type="text"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleChange}
-                    style={{ display: "none" }}
-                    tabIndex={-1}
-                    autoComplete="off"
-                    title="No rellenar" // Añadido para accesibilidad
-                  />
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="nombre"
-                        className="block text-sm font-medium text-muted-foreground mb-2"
-                      >
-                        Nombre completo *
-                      </label>
-                      <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                        aria-invalid={!!formErrors.nombre}
-                        aria-describedby="error-nombre"
-                        placeholder="Introduce tu nombre completo"
-                        autoComplete="name"
-                      />
-                      {formErrors.nombre && (
-                        <p
-                          id="error-nombre"
-                          className="text-red-500 text-xs mt-1"
-                        >
-                          {formErrors.nombre}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="telefono"
-                        className="block text-sm font-medium text-muted-foreground mb-2"
-                      >
-                        Teléfono *
-                      </label>
-                      <input
-                        type="tel"
-                        id="telefono"
-                        name="telefono"
-                        value={formData.telefono}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                        aria-invalid={!!formErrors.telefono}
-                        aria-describedby="error-telefono"
-                        placeholder="Ej: 600 123 456"
-                        autoComplete="tel"
-                      />
-                      {formErrors.telefono && (
-                        <p
-                          id="error-telefono"
-                          className="text-red-500 text-xs mt-1"
-                        >
-                          {formErrors.telefono}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
+          <div className="grid lg:grid-cols-2 gap-y-12 gap-x-8 md:gap-x-12 lg:gap-x-20 xl:gap-x-24 items-start">
+            {/* Contact Form */}
+            <div className="animate-slide-up">
+              <h2 className="text-2xl font-semibold text-black mb-6">
+                Solicita tu presupuesto
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot anti-spam */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  style={{ display: "none" }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  title="No rellenar" // Añadido para accesibilidad
+                />
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="nombre"
                       className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      Email *
+                      Nombre completo *
                     </label>
                     <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      value={formData.nombre}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                      aria-invalid={!!formErrors.email}
-                      aria-describedby="error-email"
-                      placeholder="tu@email.com"
-                      autoComplete="email"
+                      aria-invalid={!!formErrors.nombre}
+                      aria-describedby="error-nombre"
+                      placeholder="Tu nombre completo"
+                      autoComplete="name"
                     />
-                    {formErrors.email && (
-                      <p id="error-email" className="text-red-500 text-xs mt-1">
-                        {formErrors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="tipoReforma"
-                        className="block text-sm font-medium text-muted-foreground mb-2"
-                      >
-                        Tipo de reforma
-                      </label>
-                      <select
-                        id="tipoReforma"
-                        name="tipoReforma"
-                        value={formData.tipoReforma}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                        title="Selecciona el tipo de reforma" // Añadido
-                      >
-                        <option value="">Selecciona una opción</option>
-                        <option value="integral">Reforma integral</option>
-                        <option value="cocina">Cocina</option>
-                        <option value="bano">Baño</option>
-                        <option value="salon">Salón</option>
-                        <option value="dormitorio">Dormitorio</option>
-                        <option value="oficina">Oficina</option>
-                        <option value="otro">Otro</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="presupuesto"
-                        className="block text-sm font-medium text-muted-foreground mb-2"
-                      >
-                        Presupuesto aproximado
-                      </label>
-                      <select
-                        id="presupuesto"
-                        name="presupuesto"
-                        value={formData.presupuesto}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                        title="Selecciona el rango de presupuesto" // Añadido
-                      >
-                        <option value="">Selecciona un rango</option>
-                        <option value="menos-10k">Menos de 10.000€</option>
-                        <option value="10k-25k">10.000€ - 25.000€</option>
-                        <option value="25k-50k">25.000€ - 50.000€</option>
-                        <option value="50k-100k">50.000€ - 100.000€</option>
-                        <option value="mas-100k">Más de 100.000€</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="mensaje"
-                      className="block text-sm font-medium text-muted-foreground mb-2"
-                    >
-                      Cuéntanos tu proyecto *
-                    </label>
-                    <textarea
-                      id="mensaje"
-                      name="mensaje"
-                      value={formData.mensaje}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Describe tu proyecto, espacios a reformar, ideas, etc."
-                      aria-invalid={!!formErrors.mensaje}
-                      aria-describedby="error-mensaje"
-                    />
-                    {formErrors.mensaje && (
+                    {formErrors.nombre && (
                       <p
-                        id="error-mensaje"
+                        id="error-nombre"
                         className="text-red-500 text-xs mt-1"
                       >
-                        {formErrors.mensaje}
+                        {formErrors.nombre}
                       </p>
                     )}
                   </div>
-
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="privacidad"
-                      name="privacidad"
-                      checked={privacyAccepted}
-                      onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                      required
-                      className="mr-2"
-                    />
+                  <div>
                     <label
-                      htmlFor="privacidad"
-                      className="text-sm text-gray-700"
+                      htmlFor="telefono"
+                      className="block text-sm font-medium text-muted-foreground mb-2"
                     >
-                      He leído y acepto la{" "}
-                      <a
-                        href="/politica-privacidad"
-                        target="_blank"
-                        className="underline"
-                      >
-                        Política de Privacidad
-                      </a>
-                      .
+                      Teléfono *
                     </label>
-                  </div>
-                  {formErrors.privacidad && (
-                    <p className="text-xs text-red-600">
-                      {formErrors.privacidad}
-                    </p>
-                  )}
-
-                  {/* Botones alternativos */}
-                  <div className="flex flex-col gap-3 md:flex-row md:gap-4 mt-2">
-                    <Button
-                      type="submit"
-                      className="w-full bg-black text-white hover:bg-gray-800 text-lg font-semibold rounded-md shadow-md transition-colors duration-200"
-                      disabled={!privacyAccepted || loading}
-                    >
-                      {loading ? "Enviando..." : "Enviar"}
-                    </Button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Contact Info */}
-              <div className="animate-slide-up">
-                <h2 className="text-2xl font-semibold text-primary mb-6">
-                  Información de contacto
-                </h2>
-
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-start space-x-4">
-                    <Phone className="w-6 h-6 text-primary mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-primary mb-1">
-                        Teléfono
-                      </h3>
-                      <a
-                        href="tel:+34919930664"
-                        className="block text-muted-foreground hover:text-primary transition-colors duration-300"
+                    <input
+                      type="tel"
+                      id="telefono"
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                      aria-invalid={!!formErrors.telefono}
+                      aria-describedby="error-telefono"
+                      placeholder="Tu teléfono (ej. 600 123 456)"
+                      autoComplete="tel"
+                    />
+                    {formErrors.telefono && (
+                      <p
+                        id="error-telefono"
+                        className="text-red-500 text-xs mt-1"
                       >
-                        91 993 06 64
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <Mail className="w-6 h-6 text-primary mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-primary mb-1">Email</h3>
-                      <a
-                        href="mailto:info@llemy.com"
-                        className="block text-muted-foreground hover:text-primary transition-colors duration-300"
-                      >
-                        info@llemy.com
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Eliminada la sección de dirección y mapa */}
-
-                  <div className="flex items-start space-x-4">
-                    <Clock className="w-6 h-6 text-primary mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-primary mb-1">
-                        Horario
-                      </h3>
-                      <p className="text-muted-foreground">
-                        L-V: 10:00 - 20:00
+                        {formErrors.telefono}
                       </p>
-                      <p className="text-muted-foreground">S: 10:00 - 14:00</p>
-                    </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Eliminado el iframe del mapa */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-muted-foreground mb-2"
+                  >
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                    aria-invalid={!!formErrors.email}
+                    aria-describedby="error-email"
+                    placeholder="Tu email (ej. nombre@empresa.com)"
+                    autoComplete="email"
+                  />
+                  {formErrors.email && (
+                    <p id="error-email" className="text-red-500 text-xs mt-1">
+                      {formErrors.email}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="mensaje"
+                    className="block text-sm font-medium text-muted-foreground mb-2"
+                  >
+                    Cuéntanos tu proyecto o idea *
+                  </label>
+                  <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent resize-none min-h-[160px]"
+                    placeholder="Cuéntanos el estado de tus suelos, m² aproximados, tipo de madera/tarima y plazos"
+                    aria-invalid={!!formErrors.mensaje}
+                    aria-describedby="error-mensaje"
+                  />
+                  {formErrors.mensaje && (
+                    <p id="error-mensaje" className="text-red-500 text-xs mt-1">
+                      {formErrors.mensaje}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="privacidad"
+                    name="privacidad"
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    required
+                    className="mr-2 accent-black"
+                  />
+                  <label htmlFor="privacidad" className="text-sm text-gray-700">
+                    He leído y acepto la{" "}
+                    <a
+                      href="/politica-privacidad"
+                      target="_blank"
+                      className="underline"
+                    >
+                      Política de Privacidad
+                    </a>
+                    .
+                  </label>
+                </div>
+                {formErrors.privacidad && (
+                  <p className="text-xs text-red-600">
+                    {formErrors.privacidad}
+                  </p>
+                )}
+
+                {/* Botones alternativos */}
+                <div className="flex flex-col gap-3 md:flex-row md:gap-4 mt-2">
+                  <Button
+                    type="submit"
+                    className="w-full bg-black text-white hover:bg-gray-800 text-lg font-semibold rounded-md shadow-md transition-colors duration-200"
+                    disabled={!privacyAccepted || loading}
+                  >
+                    {loading ? "Enviando..." : "Enviar"}
+                  </Button>
+                </div>
+              </form>
+            </div>
+
+            {/* Contact Info */}
+            <div className="animate-slide-up">
+              <h2 className="text-2xl font-semibold text-black mb-6">
+                Información de contacto
+              </h2>
+
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start space-x-4">
+                  <Phone className="w-6 h-6 text-black mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Teléfono</h3>
+                    <a
+                      href="tel:+34622003062"
+                      className="block text-gray-600 hover:text-black transition-colors duration-300"
+                    >
+                      +34 622 00 30 62
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <Mail className="w-6 h-6 text-black mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Email</h3>
+                    <a
+                      href="mailto:info@easywood.es"
+                      className="block text-gray-600 hover:text-black transition-colors duration-300"
+                    >
+                      info@easywood.es
+                    </a>
+                  </div>
+                </div>
+
+                {/* Dirección */}
+                <div className="flex items-start space-x-4">
+                  <MapPin className="w-6 h-6 text-black mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Dirección</h3>
+                    <a
+                      href="https://www.google.com/maps?q=Calle+de+San+Gumersindo,+7,+28017+Madrid"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-gray-600 hover:text-black transition-colors duration-300"
+                    >
+                      Calle de San Gumersindo, 7, Cdad. Lineal, Madrid
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <Clock className="w-6 h-6 text-black mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-black mb-1">Horario</h3>
+                    <p className="text-gray-600">
+                      Lunes a viernes: 08:00 - 19:00
+                    </p>
+                    <p className="text-gray-600">Sábado: 08:00 - 14:00</p>
+                    <p className="text-gray-600">Domingo: cerrado</p>
+                  </div>
+                </div>
               </div>
+
+              {/* CTA: Callback modal debajo de la información de contacto */}
+              <div className="mt-8 flex justify-center">
+                <Dialog open={openCallback} onOpenChange={setOpenCallback}>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="lg"
+                      className="group flex items-center bg-black text-white hover:bg-gray-800 font-medium px-8 transition-colors duration-200"
+                      aria-label="Solicitar que te llamemos"
+                    >
+                      <span>¿Te llamamos?</span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>¿Quieres que te llamemos?</DialogTitle>
+                      <DialogDescription>
+                        Déjanos tus datos y te contactaremos lo antes posible.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form
+                      onSubmit={handleCallbackFormSubmit}
+                      className="space-y-4 mt-2"
+                    >
+                      {/* Honeypot anti-spam */}
+                      <input
+                        type="text"
+                        name="website"
+                        value={formData.website}
+                        onChange={handleChange}
+                        style={{ display: "none" }}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                      <div>
+                        <label
+                          htmlFor="callback-name"
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Nombre completo
+                        </label>
+                        <input
+                          type="text"
+                          id="callback-name"
+                          name="name"
+                          required
+                          value={callbackForm.name}
+                          onChange={handleCallbackFormChange}
+                          className="w-full px-3 py-2 rounded border border-gray-300 text-black"
+                          placeholder="Tu nombre"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="callback-phone"
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Teléfono
+                        </label>
+                        <input
+                          type="tel"
+                          id="callback-phone"
+                          name="phone"
+                          required
+                          value={callbackForm.phone}
+                          onChange={handleCallbackFormChange}
+                          className="w-full px-3 py-2 rounded border border-gray-300 text-black"
+                          placeholder="Tu teléfono (ej. 600 123 456)"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="callback-message"
+                          className="block text-sm font-medium mb-1"
+                        >
+                          Comentario (opcional)
+                        </label>
+                        <textarea
+                          id="callback-message"
+                          name="message"
+                          value={callbackForm.message}
+                          onChange={handleCallbackFormChange}
+                          className="w-full px-3 py-2 rounded border border-gray-300 text-black resize-none"
+                          placeholder="¿En qué podemos ayudarte?"
+                          rows={3}
+                          maxLength={140}
+                        />
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id="callback-privacidad"
+                          name="callback-privacidad"
+                          checked={callbackPrivacyAccepted}
+                          onChange={(e) =>
+                            setCallbackPrivacyAccepted(e.target.checked)
+                          }
+                          required
+                          className="mr-2"
+                        />
+                        <label
+                          htmlFor="callback-privacidad"
+                          className="text-sm text-gray-700"
+                        >
+                          He leído y acepto la{" "}
+                          <a
+                            href="/politica-privacidad"
+                            target="_blank"
+                            className="underline"
+                          >
+                            Política de Privacidad
+                          </a>
+                          .
+                        </label>
+                      </div>
+                      {error && (
+                        <div className="text-red-500 text-sm">{error}</div>
+                      )}
+                      {success && (
+                        <div className="text-green-600 text-sm">
+                          ¡Mensaje enviado correctamente! Te llamaremos pronto.
+                        </div>
+                      )}
+                      <DialogFooter>
+                        <Button
+                          type="submit"
+                          disabled={loading || !callbackPrivacyAccepted}
+                          className="group flex items-center justify-center"
+                        >
+                          <span>
+                            {loading ? "Enviando..." : "Solicitar llamada"}
+                          </span>
+                        </Button>
+                        <DialogClose asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            className="group flex items-center justify-center"
+                          >
+                            <span>Cancelar</span>
+                          </Button>
+                        </DialogClose>
+                      </DialogFooter>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </div>
+
+              {/* Eliminado el iframe del mapa */}
             </div>
           </div>
-        </main>
-        <Footer />
+        </div>
       </div>
     </HelmetProvider>
   );

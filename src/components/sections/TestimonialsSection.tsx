@@ -15,77 +15,77 @@ const TestimonialsSection = () => {
     {
       name: "María González",
       city: "Madrid",
-      reformType: "Reforma integral vivienda",
-      text: "Excelente trabajo de principio a fin. El equipo de Llemmy transformó nuestra casa completamente respetando nuestros gustos y presupuesto.",
+      reformType: "Acuchillado y barnizado de parquet",
+      text: "Excelente trabajo de principio a fin. El equipo de EasyWood restauró nuestro parquet de roble de 20 años y quedó como nuevo. Muy profesionales y puntuales.",
       rating: 5,
     },
     {
       name: "Carlos Martín",
-      city: "Barcelona",
-      reformType: "Cocina moderna",
-      text: "Profesionales excepcionales. La reforma de nuestra cocina superó todas nuestras expectativas. Muy recomendable.",
+      city: "Pozuelo de Alarcón",
+      reformType: "Instalación de tarima composite",
+      text: "Profesionales excepcionales. La instalación de nuestra nueva tarima composite superó todas nuestras expectativas. El acabado es perfecto y sin mantenimiento.",
       rating: 5,
     },
     {
       name: "Ana Ruiz",
-      city: "Valencia",
-      reformType: "Baño contemporáneo",
-      text: "Calidad impecable y atención al detalle extraordinaria. El resultado final es exactamente lo que habíamos soñado.",
+      city: "Madrid",
+      reformType: "Pulido y aceitado de suelos",
+      text: "Calidad impecable y atención al detalle extraordinaria. Nuestros suelos de madera maciza recuperaron su brillo natural. El resultado es exactamente lo que habíamos soñado.",
       rating: 5,
     },
     {
       name: "Pedro Sánchez",
-      city: "Sevilla",
-      reformType: "Oficina comercial",
-      text: "Transformaron nuestro local comercial en un espacio moderno y funcional. El proyecto se completó en tiempo récord.",
+      city: "Madrid",
+      reformType: "Restauración de suelos en restaurante",
+      text: "Transformaron los suelos de nuestro restaurante completamente. El acuchillado y barnizado al agua fue perfecto para un local comercial. Muy recomendable.",
       rating: 5,
     },
     {
       name: "Laura Fernández",
-      city: "Bilbao",
-      reformType: "Reforma integral piso",
-      text: "Desde el primer día mostraron profesionalidad y creatividad. Nuestra nueva casa es un sueño hecho realidad.",
+      city: "Villanueva del Pardillo",
+      reformType: "Instalación de tarima de Ipe",
+      text: "Desde el primer día mostraron profesionalidad y creatividad. La nueva tarima de Ipe con estructura de aluminio es espectacular y sin mantenimiento.",
       rating: 5,
     },
     {
       name: "Roberto Torres",
-      city: "Málaga",
-      reformType: "Cocina y salón",
-      text: "Excelente comunicación durante todo el proceso. Cumplieron todos los plazos y el resultado es espectacular.",
+      city: "Madrid",
+      reformType: "Lijado y barnizado al agua",
+      text: "Excelente comunicación durante todo el proceso. El barnizado al agua que aplicaron es perfecto para nuestra familia con niños. Sin olores y muy resistente.",
       rating: 5,
     },
     {
       name: "Isabel Castro",
-      city: "Zaragoza",
-      reformType: "Baño principal",
-      text: "Convertir nuestro baño pequeño en un espacio elegante y funcional parecía imposible, pero lo lograron perfectamente.",
+      city: "Madrid",
+      reformType: "Acuchillado de tarima Merbau",
+      text: "Convertir nuestra tarima Merbau deteriorada en un suelo como nuevo parecía imposible, pero lo lograron perfectamente. El color natural quedó espectacular.",
       rating: 5,
     },
     {
       name: "Miguel Jiménez",
-      city: "Murcia",
-      reformType: "Reforma integral ático",
-      text: "Su visión arquitectónica y atención al detalle transformaron nuestro ático en un hogar único y acogedor.",
+      city: "Madrid",
+      reformType: "Instalación de parquet roble europeo",
+      text: "Su experiencia en suelos de madera y atención al detalle transformaron nuestro hogar. El parquet de roble europeo es una maravilla.",
       rating: 5,
     },
     {
       name: "Carmen Rueda",
-      city: "Palma",
-      reformType: "Cocina rústica moderna",
-      text: "Combinaron perfectamente el estilo rústico con toques modernos. El resultado es una cocina de revista.",
+      city: "Madrid",
+      reformType: "Aceitado de suelos de madera",
+      text: "Combinaron perfectamente el acabado natural con la protección necesaria. El aceitado de nuestros suelos les dio un aspecto único y auténtico.",
       rating: 5,
     },
   ];
 
   return (
-    <section id="resenas" className="min-h-screen bg-white flex items-center">
+    <section id="resenas" className="min-h-dvh bg-background flex items-center">
       <div className="container mx-auto px-6 py-20">
         <AnimatedSection animation="slideUp">
           <div className="text-center mb-16">
             <h2 className="text-sm font-medium text-muted-foreground mb-4 tracking-wider uppercase">
               Testimonios
             </h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+            <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
               Lo que dicen nuestros clientes
             </h3>
           </div>

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { memo, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import useNavigationLogic from "./Navigation.logic.ts";
+import { HamburgerMenu } from "./hamburger-menu";
 
 // Skip link component for accessibility
 const SkipLink = () => (
@@ -14,132 +16,70 @@ const SkipLink = () => (
 );
 
 const navigationItems = [
-  {
-    label: "Inicio",
-    pagePath: "/",
-  },
-  {
-    label: "Nosotros",
-    pagePath: "/la-empresa",
-  },
-  {
-    label: "Servicios",
-    pagePath: "/servicios",
-  },
-  {
-    label: "Proyectos",
-    pagePath: "/proyectos",
-  },
+  { label: "Inicio", pagePath: "/" },
+  { label: "Nosotros", pagePath: "/la-empresa" },
+  { label: "Servicios", pagePath: "/servicios" },
+  { label: "Trabajos", pagePath: "/nuestros-trabajos" },
   { label: "Contacto", pagePath: "/contacto" },
 ];
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
-  const isEmpresaPage = location.pathname === "/la-empresa";
-  const isProjectsPage = location.pathname.startsWith("/proyectos");
-  const isServicesPage = location.pathname === "/servicios";
-  const isContactPage = location.pathname === "/contacto";
-  const isLegalPage =
-    location.pathname.startsWith("/aviso-legal") ||
-    location.pathname.startsWith("/politica-privacidad") ||
-    location.pathname.startsWith("/politica-cookies");
+const Navigation = memo(() => {
+  const { isNavVisible, isLegalPage, handleNavigation, logoSrc } =
+    useNavigationLogic();
 
+  // Medir altura real del header y exponerla como variable CSS
+  const navRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const updateHeaderHeight = () => {
+      const h = navRef.current?.offsetHeight ?? 0;
+      document.documentElement.style.setProperty("--header-height", `${h}px`);
     };
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
+    return () => window.removeEventListener("resize", updateHeaderHeight);
+  }, [isNavVisible]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    if (isHomePage) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Navigate to home page and then scroll
-      window.location.href = `/#${sectionId}`;
-    }
-  };
-
-  const handleNavigation = (item: any) => {
-    setIsMobileMenuOpen(false);
-    if (item.pagePath.startsWith("/#")) {
-      // Si es una sección, navega al home y deja el hash
-      navigate(item.pagePath);
-    } else {
-      navigate(item.pagePath);
-    }
-  };
-
-  const isNavVisible =
-    isScrolled ||
-    isProjectsPage ||
-    isMobileMenuOpen ||
-    isServicesPage ||
-    isContactPage ||
-    isLegalPage;
-
-  // Logo: blanco solo en landing o empresa y menú transparente
-  const logoSrc =
-    (isHomePage || isEmpresaPage) && !isNavVisible
-      ? "/images/logo/logo-blanco.png"
-      : "/images/logo/logo-negro.png";
-
-  // Text color: always black on legal pages, otherwise based on nav visibility
-  const textColor = isLegalPage
-    ? "text-black"
-    : isNavVisible
+  const textColor = isNavVisible
+    ? "text-white"
+    : isLegalPage
     ? "text-black"
     : "text-white";
-  const hoverColor = isLegalPage
-    ? "hover:text-gray-600"
-    : isNavVisible
-    ? "hover:text-gray-600"
-    : "hover:text-gray-200";
+  const hoverColor = "hover:text-[#74bd51]";
 
   return (
     <>
       <SkipLink />
       <nav
+        ref={navRef as any}
         role="navigation"
         aria-label="Navegación principal"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isNavVisible ? "glass-nav shadow-glass" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 border-b ${
+          isNavVisible ? "glass-nav-dark shadow-glass" : "bg-transparent"
+        } ${isNavVisible ? "border-black/20" : "border-transparent"}`}
       >
         <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center md:justify-start justify-center relative">
+          <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="flex flex-row items-center space-x-2 group justify-center w-full md:justify-start md:w-auto"
+              className="flex flex-row items-center space-x-2 group justify-center w-full md:justify-start md:w-auto z-[10001] relative"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
             >
               <img
                 src={logoSrc}
-                alt="Logo Llemy"
-                className="w-10 h-10 object-contain transition-all duration-300 bg-transparent rounded-lg"
+                alt="Logo EasyWood"
+                className="h-16 sm:h-18 md:h-12 lg:h-14 w-auto max-w-[220px] sm:max-w-[240px] md:max-w-[220px] object-contain transition-all duration-300 bg-transparent rounded-lg group-hover:animate-logo-bounce"
               />
-              <span
-                className={`text-xl font-semibold transition-all duration-300 ${textColor}`}
-              >
-                Llemy
-              </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="hidden md:flex items-center space-x-8 lg:space-x-10">
               {navigationItems.map((item, index) => (
                 <button
                   key={index}
                   onClick={() => handleNavigation(item)}
-                  className={`text-sm font-medium transition-all duration-300 hover:scale-105 relative group ${textColor} ${hoverColor}`}
+                  className={`uppercase tracking-wide text-base lg:text-lg font-semibold transition-all duration-300 relative group ${textColor} ${hoverColor}`}
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
@@ -147,71 +87,37 @@ const Navigation = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-glass ${
-                isLegalPage
-                  ? "glass-button-dark bg-black text-white hover:bg-gray-800"
-                  : isNavVisible
-                  ? "glass-button-dark bg-black text-white hover:bg-gray-800"
-                  : "glass-button text-white hover:text-black"
-              }`}
-              aria-label={
-                isMobileMenuOpen
-                  ? "Cerrar menú de navegación"
-                  : "Abrir menú de navegación"
-              }
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-5 h-5" />
-              ) : (
-                <Menu className="w-5 h-5" />
-              )}
-            </button>
+            {/* Desktop CTA aligned with links */}
+            <div className="hidden md:block">
+              <Link
+                to="/contacto"
+                aria-label="Ir a contacto para pedir presupuesto"
+              >
+                <Button
+                  size="sm"
+                  className="group flex items-center glass-button-dark bg-white text-black hover:bg-gray-100 font-medium px-6 fast-transitions touch-optimized optimize-interactions shadow-glass hover:shadow-glass-lg border-0 transition-all duration-300 ease-out"
+                >
+                  <span>Pide presupuesto</span>
+                  <ArrowRight
+                    size={18}
+                    className="ml-2 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"
+                    aria-hidden="true"
+                  />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button - Hamburger Menu */}
+            <div className="md:hidden">
+              <HamburgerMenu />
+            </div>
           </div>
         </div>
       </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 left-0 right-0 z-40 md:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
-      >
-        <div
-          className={`fixed inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-
-        <div
-          id="mobile-menu"
-          className={`relative pt-20 pb-6 px-6 glass-nav shadow-glass border-b border-white/20 transform transition-transform duration-300 ${
-            isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
-          }`}
-          role="menu"
-          aria-label="Menú de navegación móvil"
-        >
-          <div className="space-y-4">
-            {navigationItems.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => handleNavigation(item)}
-                className="block w-full text-center py-3 px-4 text-base font-medium text-black hover:text-gray-600 transition-all duration-300 hover:bg-white/10 rounded-lg"
-                role="menuitem"
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   );
-};
+});
+
+Navigation.displayName = "Navigation";
 
 export default Navigation;

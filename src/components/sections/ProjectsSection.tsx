@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projectsData";
@@ -12,16 +13,16 @@ const ProjectsSection = () => {
   return (
     <section
       id="proyectos"
-      className="min-h-screen bg-gray-50 flex items-center"
+      className="min-h-dvh bg-background flex items-center"
     >
       <div className="container mx-auto px-6 py-20">
         <AnimatedSection animation="slideUp">
           <div className="text-center mb-16">
             <h2 className="text-sm font-medium text-gray-500 mb-4 tracking-wider uppercase">
-              Nuestros proyectos
+              Nuestros trabajos
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Inspírate con nuestras reformas realizadas en Madrid
+              Inspírate con nuestros trabajos realizados en Madrid
             </h3>
           </div>
         </AnimatedSection>
@@ -34,7 +35,7 @@ const ProjectsSection = () => {
                 animation="slideUp"
                 delay={index * 0.1}
               >
-                <Link to={`/proyectos/${project.slug}`}>
+                <Link to={`/nuestros-trabajos/${project.slug}`}>
                   <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
                     {/* Imagen de fondo */}
                     <img
@@ -90,14 +91,18 @@ const ProjectsSection = () => {
 
         <AnimatedSection animation="slideUp" delay={0.8}>
           <div className="text-center mt-12">
-            <Link to="/proyectos">
-              <button className="group flex items-center justify-center mx-auto glass-button-dark bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 font-medium shadow-glass border-0">
-                <span>Ver todos los proyectos</span>
+            <Link to="/nuestros-trabajos">
+              <Button
+                size="lg"
+                className="group flex items-center justify-center mx-auto glass-button-cararra px-6 py-4 md:px-10 md:py-6 text-base md:text-lg font-semibold rounded-lg border-0 w-full md:w-auto"
+              >
+                <span>Ver todos los trabajos</span>
                 <ArrowRight
-                  size={22}
-                  className="ml-2 sm:opacity-0 sm:translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 opacity-100 translate-x-0 transition-all duration-300 ease-out"
+                  size={18}
+                  className="ml-2 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 ease-out"
+                  aria-hidden="true"
                 />
-              </button>
+              </Button>
             </Link>
           </div>
         </AnimatedSection>

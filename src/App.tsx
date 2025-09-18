@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, memo } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,9 +7,8 @@ import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
-  useLocation,
+  Navigate,
 } from "react-router-dom";
-import Lenis from "lenis";
 import Home from "./pages/site/Home";
 import AboutUs from "./pages/site/AboutUs";
 import Services from "./pages/site/Services";
@@ -19,40 +18,45 @@ import Contact from "./pages/site/Contact";
 import LegalNotice from "./pages/legales/LegalNotice";
 import PrivacyPolicy from "./pages/legales/PrivacyPolicy";
 import CookiesPolicy from "./pages/legales/CookiesPolicy";
+import LiquidGlassDemo from "./pages/site/LiquidGlassDemo";
 import NotFound from "./pages/site/NotFound";
 import CookieConsent from "./components/layout/CookieConsent";
-import useLenis from "./hooks/useLenis";
+import Navigation from "./components/layout/Navigation";
+import Footer from "./components/layout/Footer";
+import useScrollToTop from "./hooks/useScrollToTop";
+
+// Componentes memoizados para evitar re-renders
+const MemoizedNavigation = memo(Navigation);
+const MemoizedFooter = memo(Footer);
+const MemoizedCookieConsent = memo(CookieConsent);
 
 const queryClient = new QueryClient();
 
-// Componente de control manual del scroll
-const ScrollToTop = ({ lenis }: { lenis: Lenis | null }) => {
-  const { pathname } = useLocation();
+// Layout raíz optimizado que envuelve todas las páginas
+const RootLayout = memo(() => {
+  // Hook para manejar scroll to top y navegación con hash
+  useScrollToTop();
 
+  // Asegurar que el navegador no restaure scroll automáticamente entre páginas
   useEffect(() => {
-    // Usar Lenis si está disponible, sino usar scroll nativo
-    if (lenis) {
-      lenis.scrollTo(0, { duration: 0.5 });
-    } else {
-      window.scrollTo(0, 0);
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
-  }, [pathname, lenis]); // Se ejecuta cada vez que la ruta cambia
-
-  return null;
-};
-
-// Layout raíz que envuelve todas las páginas
-const RootLayout = () => {
-  const lenis = useLenis(); // Activar el scroll suave en toda la aplicación
+  }, []);
 
   return (
     <>
-      <ScrollToTop lenis={lenis} />
-      <CookieConsent />
-      <Outlet />
+      <MemoizedCookieConsent />
+      <MemoizedNavigation />
+      <main id="main-content">
+        <Outlet />
+      </main>
+      <MemoizedFooter />
     </>
   );
-};
+});
+
+RootLayout.displayName = "RootLayout";
 
 const router = createBrowserRouter([
   {
@@ -61,9 +65,18 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "la-empresa", element: <AboutUs /> },
       { path: "servicios", element: <Services /> },
-      { path: "proyectos", element: <Projects /> },
-      { path: "proyectos/:slug", element: <ProjectDetail /> },
+      { path: "nuestros-trabajos", element: <Projects /> },
+      { path: "nuestros-trabajos/:slug", element: <ProjectDetail /> },
+      {
+        path: "proyectos",
+        element: <Navigate to="/nuestros-trabajos" replace />,
+      },
+      {
+        path: "proyectos/:slug",
+        element: <Navigate to="/nuestros-trabajos/:slug" replace />,
+      },
       { path: "contacto", element: <Contact /> },
+      { path: "liquid-glass-demo", element: <LiquidGlassDemo /> },
       { path: "aviso-legal", element: <LegalNotice /> },
       { path: "politica-privacidad", element: <PrivacyPolicy /> },
       { path: "politica-cookies", element: <CookiesPolicy /> },

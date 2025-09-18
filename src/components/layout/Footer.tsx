@@ -1,25 +1,22 @@
-import React from "react";
-import {
-  Instagram,
-  Linkedin,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Facebook,
-} from "lucide-react";
+import { memo } from "react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { SiTiktok, SiInstagram, SiYoutube } from "react-icons/si";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { Separator } from "@/components/ui/separator";
 import useCurrentYear from "@/hooks/useCurrentYear";
 
-const Footer = () => {
+type FooterProps = {
+  showCredit?: boolean;
+};
+
+const Footer = memo<FooterProps>(({ showCredit = true }) => {
   const currentYear = useCurrentYear();
 
   return (
     <footer
       id="contacto"
-      className="glass-footer py-16 lg:py-20 border-t border-gray-200"
+      className="glass-nav-dark py-16 lg:py-20 border-t border-black/20"
       role="contentinfo"
       aria-label="Información de contacto y enlaces"
     >
@@ -34,85 +31,114 @@ const Footer = () => {
                 className="flex items-center justify-center lg:justify-start space-x-3"
               >
                 <img
-                  src="/images/logo/LOGO LLEMY Vector.svg"
-                  alt="Logo Llemy"
-                  className="w-12 h-12 object-contain"
+                  src="/images/logo/easywood_logo.png"
+                  alt="Logo EasyWood"
+                  className="h-10 md:h-12 lg:h-14 w-auto max-w-[180px] md:max-w-[220px] object-contain"
                   loading="lazy"
                 />
-                <span className="text-2xl font-bold text-black">Llemy</span>
               </Link>
 
-              <p className="text-gray-600 text-sm leading-relaxed max-w-xs mx-auto lg:mx-0">
-                Más de 25 años transformando espacios con excelencia técnica y
-                humana en Madrid.
+              <p className="text-gray-200 text-sm leading-relaxed max-w-xs mx-auto lg:mx-0">
+                Expertos en suelos de madera, tarima y parquet en Madrid.
+                Instalación, restauración, acuchillado, pulido y aceitado.
               </p>
 
               {/* Social Media */}
-              <div className="flex justify-center lg:justify-start space-x-4" role="list" aria-label="Redes sociales">
+              <div
+                className="flex justify-center lg:justify-start space-x-4"
+                role="list"
+                aria-label="Redes sociales"
+              >
                 <a
-                  href="https://www.facebook.com/REFORMASLLEMY"
+                  href="https://www.instagram.com/easywood_es/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-button-dark bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-300 shadow-glass hover:scale-110"
-                  aria-label="Visitar página de Facebook de Llemy Reformas (se abre en ventana nueva)"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-[#74bd51] transition-all duration-300 hover:scale-110"
+                  aria-label="Visitar perfil de Instagram de EasyWood (se abre en ventana nueva)"
                 >
-                  <Facebook className="w-4 h-4" aria-hidden="true" />
+                  <SiInstagram className="w-4 h-4" aria-hidden="true" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/reformasllemy/"
+                  href="https://www.tiktok.com/@easywood_es"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-button-dark bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-300 shadow-glass hover:scale-110"
-                  aria-label="Visitar perfil de LinkedIn de Llemy Reformas (se abre en ventana nueva)"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-[#74bd51] transition-all duration-300 hover:scale-110"
+                  aria-label="Visitar perfil de TikTok de EasyWood (se abre en ventana nueva)"
                 >
-                  <Linkedin className="w-4 h-4" aria-hidden="true" />
+                  <SiTiktok className="w-4 h-4" aria-hidden="true" />
                 </a>
                 <a
-                  href="https://www.instagram.com/llemyreformas/"
+                  href="https://www.youtube.com/@easywood_es"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 glass-button-dark bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition-all duration-300 shadow-glass hover:scale-110"
-                  aria-label="Visitar perfil de Instagram de Llemy Reformas (se abre en ventana nueva)"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-[#74bd51] transition-all duration-300 hover:scale-110"
+                  aria-label="Visitar canal de YouTube de EasyWood (se abre en ventana nueva)"
                 >
-                  <Instagram className="w-4 h-4" aria-hidden="true" />
+                  <SiYoutube className="w-4 h-4" aria-hidden="true" />
                 </a>
               </div>
             </div>
 
             {/* Contact Information */}
             <div className="space-y-6 text-center lg:text-left">
-              <h4 className="text-lg font-semibold text-black">Contacto</h4>
+              <h4 className="text-lg font-semibold text-white">Contacto</h4>
               <div className="space-y-4">
-                {/* Eliminada la dirección física */}
                 <div className="flex items-center justify-center lg:justify-start space-x-3">
-                  <Phone className="w-4 h-4 text-gray-500 flex-shrink-0" aria-hidden="true" />
+                  <MapPin
+                    className="w-4 h-4 text-gray-300 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <div className="text-sm text-gray-200 space-y-1 text-center lg:text-left">
+                    <a
+                      href="https://www.google.com/maps?q=Calle+de+San+Gumersindo,+7,+28017+Madrid"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#74bd51] transition-colors duration-300"
+                      aria-label="Abrir en Google Maps: Calle de San Gumersindo, 7, Ciudad Lineal, Madrid"
+                    >
+                      Calle de San Gumersindo, 7, Cdad. Lineal, Madrid
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center lg:justify-start space-x-3">
+                  <Phone
+                    className="w-4 h-4 text-gray-300 flex-shrink-0"
+                    aria-hidden="true"
+                  />
                   <div className="text-sm text-gray-600 space-y-1">
                     <a
-                      href="tel:+34919930664"
-                      className="block hover:text-black transition-colors duration-300"
-                      aria-label="Llamar al teléfono 91 993 06 64"
+                      href="tel:+34622003062"
+                      className="block text-gray-200 hover:text-[#74bd51] transition-colors duration-300"
+                      aria-label="Llamar al teléfono +34 622 00 30 62"
                     >
-                      91 993 06 64
+                      +34 622 00 30 62
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-3">
-                  <Mail className="w-4 h-4 text-gray-500 flex-shrink-0" aria-hidden="true" />
+                  <Mail
+                    className="w-4 h-4 text-gray-300 flex-shrink-0"
+                    aria-hidden="true"
+                  />
                   <a
-                    href="mailto:info@llemy.com"
-                    className="text-sm text-gray-600 hover:text-black transition-colors duration-300"
-                    aria-label="Enviar email a info@llemy.com"
+                    href="mailto:info@easywood.es"
+                    className="text-sm text-gray-200 hover:text-[#74bd51] transition-colors duration-300"
+                    aria-label="Enviar email a info@easywood.es"
                   >
-                    info@llemy.com
+                    info@easywood.es
                   </a>
                 </div>
 
                 <div className="flex items-center justify-center lg:justify-start space-x-3">
-                  <Clock className="w-4 h-4 text-gray-500 flex-shrink-0" aria-hidden="true" />
-                  <div className="text-sm text-gray-600">
-                    <p>L-V: 10:00 - 20:00</p>
-                    <p>S: 10:00 - 14:00</p>
+                  <Clock
+                    className="w-4 h-4 text-gray-300 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <div className="text-sm text-gray-200">
+                    <p>Lunes a viernes: 08:00 - 19:00</p>
+                    <p>Sábado: 08:00 - 14:00</p>
+                    <p>Domingo: cerrado</p>
                   </div>
                 </div>
               </div>
@@ -120,23 +146,23 @@ const Footer = () => {
 
             {/* Legal Links */}
             <div className="space-y-6 text-center lg:text-left">
-              <h4 className="text-lg font-semibold text-black">Legal</h4>
+              <h4 className="text-lg font-semibold text-white">Legal</h4>
               <div className="space-y-3">
                 <Link
                   to="/aviso-legal"
-                  className="block text-sm text-gray-600 hover:text-black transition-colors duration-300"
+                  className="block text-sm text-gray-200 hover:text-[#74bd51] transition-colors duration-300"
                 >
                   Aviso Legal
                 </Link>
                 <Link
                   to="/politica-privacidad"
-                  className="block text-sm text-gray-600 hover:text-black transition-colors duration-300"
+                  className="block text-sm text-gray-200 hover:text-[#74bd51] transition-colors duration-300"
                 >
                   Política de Privacidad
                 </Link>
                 <Link
                   to="/politica-cookies"
-                  className="block text-sm text-gray-600 hover:text-black transition-colors duration-300"
+                  className="block text-sm text-gray-200 hover:text-[#74bd51] transition-colors duration-300"
                 >
                   Política de Cookies
                 </Link>
@@ -148,26 +174,29 @@ const Footer = () => {
 
           {/* Bottom Footer */}
           <div className="text-center">
-            <p className="text-sm text-gray-500">
-              © {currentYear} Llemy Reformas & Construcciones. Todos los
-              derechos reservados.
+            <p className="text-sm text-gray-300">
+              © {currentYear} EasyWood. Todos los derechos reservados.
             </p>
-            <p className="text-xs text-gray-400 mt-2">
-              Sitio desarrollado por{" "}
-              <a
-                href="https://www.404studios.digital"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-black hover:text-gray-600 transition-colors duration-300 font-medium"
-              >
-                404studios
-              </a>
-            </p>
+            {showCredit && (
+              <p className="text-xs text-gray-400 mt-2">
+                Sitio desarrollado por{" "}
+                <a
+                  href="https://www.404studios.digital"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-[#74bd51] transition-colors duration-300 font-medium"
+                >
+                  404studios
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </AnimatedSection>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;

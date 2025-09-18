@@ -4,4 +4,5 @@ const useLenis = () => {
   return null;
 };
 
+export { useLenis };
 export default useLenis;

@@ -14,7 +14,7 @@ const TeamAndProcessSection = () => {
               Nuestro Equipo
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Los profesionales que hacen posible cada proyecto
+              Los profesionales que hacen posible cada suelo de madera
             </h3>
           </div>
         </AnimatedSection>
@@ -55,8 +55,8 @@ const TeamAndProcessSection = () => {
                   </div>
                   <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-black rounded-full flex items-center justify-center">
                     <img
-                      src="/images/logo/logo-blanco.png"
-                      alt="Logo Llemy"
+                      src="/images/logo/easywood_logo.png"
+                      alt="Logo Easywood"
                       className="w-6 h-6 object-contain"
                     />
                   </div>
@@ -85,7 +85,7 @@ const TeamAndProcessSection = () => {
               Nuestro Proceso
             </h2>
             <h3 className="text-3xl md:text-4xl font-bold text-black mb-6">
-              Metodología probada en más de 340 proyectos
+              Metodología probada en más de 200 suelos de madera
             </h3>
           </div>
         </AnimatedSection>

@@ -18,30 +18,32 @@ const WhyChooseUsSection = ({
 }: WhyChooseUsSectionProps = {}) => {
   // Default content for main page
   const defaultReasons = [
-    "Experiencia probada ante imprevistos con más de 25 años en el sector",
-    "Garantía de 1 año tras la entrega de todos nuestros trabajos",
-    "Presupuesto detallado en menos de 48 horas tras la visita, gratuito y sin compromiso",
-    "Equipo propio multidisciplinar especializado en cada área",
-    "Materiales de primera calidad seleccionados cuidadosamente",
+    "<strong>Expertos en madera:</strong> instalación, acuchillado, lijado y barnizado con sistemas al agua, sin olores y de alta resistencia.",
+    "<strong>Experiencia real:</strong> cientos de proyectos restaurados en Madrid avalan nuestra trayectoria.",
+    "<strong>Atención personalizada:</strong> presupuesto gratuito en 24/48h y asesoría técnica adaptada a tu caso.",
+    "<strong>Detalles que importan:</strong> protegemos tu mobiliario, trabajamos limpio y dejamos el espacio listo para disfrutar.",
   ];
 
   const title = cityName
     ? `¿Por qué contratarnos en ${cityName}?`
-    : "¿Por qué contratarnos?";
+    : "¿Por qué trabajar con Easywood?";
   const subtitle = cityName
     ? `${
         experience || "Años de experiencia"
-      } nos avalan. Descubre las razones por las que nuestros clientes han confiado en nosotros.`
-    : "Más de dos décadas de experiencia nos avalan. Descubre las razones por las que miles de clientes han confiado en nosotros.";
+      } nos avalan. Motivos para elegir EasyWood para tus suelos en ${cityName}.`
+    : "Porque no todos los suelos de madera se tratan igual. En Easywood somos expertos cuidando, instalando y renovando parquet, tarimas y laminados con un método que combina tradición, técnica y respeto por tu hogar.";
 
   const displayReasons = reasons || defaultReasons;
 
   return (
-    <section className="min-h-screen bg-white text-black flex items-center">
+    <section className="min-h-dvh bg-background text-black flex items-center">
       <div className="container mx-auto px-6 py-20">
         <AnimatedSection animation="slideUp">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">{title}</h2>
+            <h2 className="text-sm font-medium text-gray-500 mb-4 tracking-wider uppercase">
+              Por qué elegirnos
+            </h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-6">{title}</h3>
             <p className="text-lg text-black max-w-3xl mx-auto">{subtitle}</p>
           </div>
         </AnimatedSection>
@@ -59,9 +61,10 @@ const WhyChooseUsSection = ({
                       <Check className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <p className="text-gray-700 leading-relaxed text-lg">
-                    {reason}
-                  </p>
+                  <p
+                    className="text-gray-700 leading-relaxed text-lg"
+                    dangerouslySetInnerHTML={{ __html: reason }}
+                  />
                 </div>
               ))}
             </div>

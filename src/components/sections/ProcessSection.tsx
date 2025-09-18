@@ -7,47 +7,50 @@ const ProcessSection = () => {
   const steps = [
     {
       icon: Search,
-      title: "Visita y asesoría gratuita",
+      title: "Visita y asesoría técnica gratuita",
       description:
-        "Analizamos tu espacio y necesidades sin compromiso. Te asesoramos sobre las mejores opciones para tu proyecto.",
+        "Medición del suelo, evaluación del estado y recomendaciones: instalación, acuchillado o mantenimiento.",
     },
     {
       icon: FileText,
-      title: "Presupuesto detallado (< 24h)",
+      title: "Presupuesto detallado (< 24/48h)",
       description:
-        "Recibes un presupuesto completo y transparente en menos de 24 horas, sin sorpresas ni costes ocultos.",
+        "Opciones de materiales (barnices al agua, aceites, tarimas) y plan de trabajo transparente.",
     },
     {
       icon: Calendar,
-      title: "Planificación y calendario",
+      title: "Planificación y preparación",
       description:
-        "Definimos juntos los tiempos y fases del proyecto, adaptándonos a tus necesidades y disponibilidad.",
+        "Protección de mobiliario, preparación del soporte y calendario de ejecución sin sorpresas.",
     },
     {
       icon: Wrench,
-      title: "Ejecución y seguimiento",
+      title: "Ejecución especializada",
       description:
-        "Nuestro equipo ejecuta el proyecto con seguimiento diario, manteniéndote informado en todo momento.",
+        "Maquinaria profesional para lijado, acuchillado y aplicación de acabados de alta resistencia.",
     },
     {
       icon: Key,
-      title: "Entrega llave en mano + limpieza",
+      title: "Entrega y mantenimiento",
       description:
-        "Entregamos tu proyecto completamente terminado y limpio, listo para que puedas disfrutarlo inmediatamente.",
+        "Limpieza final, recomendaciones de cuidado y plan de mantenimiento opcional (aceitado/pulido).",
     },
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center">
+    <section className="min-h-dvh bg-background flex items-center">
       <div className="container mx-auto px-6 py-12">
         <AnimatedSection animation="slideUp">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-              Nuestro proceso de trabajo
+            <h2 className="text-sm font-medium text-gray-500 mb-4 tracking-wider uppercase">
+              Nuestro proceso
             </h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              Nuestro proceso de trabajo
+            </h3>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Un método probado que garantiza resultados excepcionales en cada
-              proyecto
+              Metodología especializada para suelos de madera. Resultado
+              profesional y duradero.
             </p>
           </div>
         </AnimatedSection>
@@ -64,19 +67,35 @@ const ProcessSection = () => {
                   animation="slideUp"
                   delay={index * 0.15}
                 >
-                  <motion.div
-                    className="relative flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6"
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <motion.div className="relative flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6 group">
                     {/* Ícono */}
                     <div className="flex-shrink-0 relative mx-auto md:mx-0">
                       <motion.div
-                        className="w-12 h-12 md:w-14 md:h-14 bg-black rounded-full flex items-center justify-center shadow-glass relative z-10"
-                        whileHover={{ scale: 1.05 }}
+                        className="w-12 h-12 md:w-14 md:h-14 bg-black rounded-full flex items-center justify-center shadow-glass relative z-10 group-hover:bg-[#74bd51] transition-colors duration-300"
+                        initial={{ rotate: -180, opacity: 0, scale: 0.5 }}
                         whileInView={{
-                          rotate: [0, 10, 0],
-                          transition: { duration: 0.6, delay: index * 0.1 },
+                          rotate: 0,
+                          opacity: 1,
+                          scale: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 10,
+                            duration: 0.8,
+                            delay: index * 0.15,
+                          },
+                        }}
+                        whileHover={{
+                          scale: [1, 1.2, 1],
+                          transition: {
+                            duration: 0.6,
+                            times: [0, 0.5, 1],
+                            ease: "easeInOut",
+                          },
+                        }}
+                        whileTap={{
+                          scale: 0.95,
+                          transition: { duration: 0.1 },
                         }}
                         viewport={{ once: true }}
                       >
@@ -86,7 +105,7 @@ const ProcessSection = () => {
 
                     {/* Contenido */}
                     <div className="flex-1 glass-card rounded-xl p-6 hover:shadow-glass-lg transition-all duration-300 w-full">
-                      <h3 className="text-lg md:text-xl font-semibold text-black mb-3 text-center md:text-left">
+                      <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 text-center md:text-left">
                         {step.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed text-center md:text-left text-sm md:text-base">

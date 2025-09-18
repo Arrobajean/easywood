@@ -24,4 +24,5 @@ const useCurrentYear = () => {
   return currentYear;
 };
 
+export { useCurrentYear };
 export default useCurrentYear;

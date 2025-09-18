@@ -2,17 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom animations for Liquid Glass Button */
+@keyframes liquid-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes liquid-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes liquid-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes liquid-float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
 @layer base {
   :root {
-    /* Fondo general más suave */
-    --background: 240 5% 98%;
-    /* #fafafa */
+    /* Fondo general más suave - Cararra */
+    --background: 30 14% 96%;
+    /* #F5F4F2 - Cararra */
     --foreground: 0 0% 0%;
 
-    --card: 240 4% 96%;
-    /* #f4f4f5 */
+    --card: 45 15% 94%;
+    /* Slightly darker than background for contrast */
     --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
@@ -21,10 +70,10 @@
     --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 97%;
+    --secondary: 45 12% 93%;
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 0 0% 96%;
+    --muted: 45 10% 92%;
     --muted-foreground: 0 0% 45%;
 
     --accent: 0 0% 90%;
@@ -39,13 +88,13 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 45 18% 95%;
     --sidebar-foreground: 0 0% 10%;
     --sidebar-primary: 0 0% 0%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent: 45 8% 90%;
     --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 91%;
+    --sidebar-border: 45 5% 88%;
     --sidebar-ring: 0 0% 0%;
   }
 
@@ -91,7 +140,28 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: "Merriweather", serif !important;
+    background-color: #F5F4F2 !important;
+  }
+
+  html {
+    background-color: #F5F4F2 !important;
+  }
+
+  #root {
+    background-color: #F5F4F2 !important;
+  }
+
+  .min-h-screen {
+    background-color: #F5F4F2 !important;
+  }
+
+  /* Forzar el color de fondo Cararra en todos los elementos principales */
+  main,
+  section,
+  div[class*="section"] {
+    background-color: #F5F4F2 !important;
   }
 
   /* Configuración de fuentes para diferentes elementos */
@@ -101,19 +171,30 @@
   h4,
   h5,
   h6 {
-    @apply font-space-grotesk;
+    font-family: "Montserrat", sans-serif !important;
   }
 
   p,
   span,
   div,
   li {
-    @apply font-inter;
+    font-family: "Merriweather", serif !important;
   }
 
   button,
-  .btn {
-    @apply font-manrope;
+  .btn,
+  .glass-button,
+  .glass-button-dark,
+  button[class*="font-"],
+  .btn[class*="font-"],
+  [class*="glass-button"][class*="font-"],
+  button.font-medium,
+  button.font-semibold,
+  button.font-bold,
+  .font-medium button,
+  .font-semibold button,
+  .font-bold button {
+    font-family: "Montserrat", sans-serif !important;
   }
 }
 
@@ -121,7 +202,8 @@
 
   /* Glass effect utilities */
   .glass {
-    @apply backdrop-blur-md bg-white/80 border border-white/20;
+    @apply backdrop-blur-md border border-white/20;
+    background-color: rgba(245, 244, 242, 0.8) !important;
   }
 
   .glass-dark {
@@ -129,27 +211,350 @@
   }
 
   .glass-card {
-    @apply backdrop-blur-lg bg-white/60 border border-white/20 shadow-lg;
+    @apply backdrop-blur-lg border border-white/20 shadow-lg;
+    background-color: rgba(245, 244, 242, 0.6) !important;
   }
 
   .glass-nav {
-    @apply backdrop-blur-xl bg-white/90 border-b border-white/20;
+    @apply backdrop-blur-xl border-b border-white/20;
+    background-color: rgba(245, 244, 242, 0.9) !important;
   }
 
-  .glass-button {
-    @apply backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 transition-all duration-300;
+  .glass-nav-dark {
+    @apply backdrop-blur-xl bg-black/70 border-b border-black/20;
   }
+
 
   .glass-button-dark {
-    @apply backdrop-blur-md bg-black/80 border border-black/30 hover:bg-black/90 transition-all duration-300 shadow-glass;
+    @apply backdrop-blur-xl transition-all duration-500 shadow-glass;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.1) 100%) !important;
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-button-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .glass-button-dark>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  .glass-button-dark:hover::before {
+    left: 100%;
+  }
+
+  .glass-button-dark:hover {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.2) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    color: #ffffff !important;
+    box-shadow:
+      0 16px 48px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button-dark:active {
+    transition-duration: 0.1s;
+  }
+
+  /* Efecto glass minimalista estilo Apple */
+  .glass-hero-button {
+    @apply transition-all duration-300 font-montserrat;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    position: relative;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-hero-button:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-hero-button:active {
+    transition-duration: 0.1s;
+  }
+
+  /* Animación de bounce sutil para botones */
+  @keyframes subtle-bounce {
+    0% {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    25% {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    50% {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    75% {
+      transform: translateY(-3px) scale(1.025);
+    }
+
+    100% {
+      transform: translateY(-2px) scale(1.02);
+    }
+  }
+
+  /* Animación de bounce sutil para el logo */
+  @keyframes logo-bounce {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+
+    25% {
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    50% {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    75% {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Mejora para dispositivos móviles */
+  @media (max-width: 640px) {
+    .glass-hero-button {
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .glass-hero-button:hover {}
   }
 
   .glass-footer {
-    @apply backdrop-blur-sm bg-white/40 border-t border-white/20;
+    @apply backdrop-blur-sm border-t border-white/20;
+    background-color: rgba(245, 244, 242, 0.4) !important;
   }
 
-  .glass-cta {
-    @apply backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-glass hover:shadow-glass-lg;
+
+  /* Glass button para fondo blanco - efecto sutil y elegante */
+  .glass-button-white-bg {
+    @apply transition-all duration-300 font-medium;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.95) 50%,
+        rgba(0, 0, 0, 0.98) 100%) !important;
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 4px 16px 0 rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.02),
+      0 0 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  .glass-button-white-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .glass-button-white-bg>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  .glass-button-white-bg:hover::before {
+    left: 100%;
+  }
+
+  .glass-button-white-bg:hover {
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.98) 50%,
+        rgba(0, 0, 0, 1) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow:
+      0 8px 24px 0 rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-button-white-bg:active {
+    transition-duration: 0.1s;
+  }
+
+  /* Glass button verde para CTA */
+  .glass-button-green {
+    @apply transition-all duration-300 font-medium;
+    background: linear-gradient(135deg,
+        rgba(34, 197, 94, 0.6) 0%,
+        rgba(34, 197, 94, 0.7) 50%,
+        rgba(34, 197, 94, 0.8) 100%) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px 0 rgba(34, 197, 94, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button-green::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .glass-button-green>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  .glass-button-green:hover::before {
+    left: 100%;
+  }
+
+  .glass-button-green:hover {
+    background: linear-gradient(135deg,
+        rgba(34, 197, 94, 0.8) 0%,
+        rgba(34, 197, 94, 0.85) 50%,
+        rgba(34, 197, 94, 0.9) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 40px 0 rgba(34, 197, 94, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.25);
+  }
+
+  .glass-button-green:active {
+    transform: translateY(-1px);
+    transition-duration: 0.1s;
+  }
+
+  /* Glass button para fondo Cararra - efecto sutil y elegante */
+  .glass-button-cararra {
+    @apply transition-all duration-300 font-medium;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 0.9) 100%) !important;
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-button-cararra::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+
+  .glass-button-cararra>* {
+    position: relative;
+    z-index: 2;
+  }
+
+  .glass-button-cararra:hover::before {
+    left: 100%;
+  }
+
+  .glass-button-cararra:hover {
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.9) 50%,
+        rgba(0, 0, 0, 0.95) 100%) !important;
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow:
+      0 12px 40px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button-cararra:active {
+    transition-duration: 0.1s;
   }
 }
 
@@ -160,15 +565,24 @@
 
   /* Glass shadows */
   .shadow-glass {
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.1),
+      0 4px 16px 0 rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .shadow-glass-lg {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.15),
+      0 12px 24px 0 rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
 
   .shadow-glass-xl {
-    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+    box-shadow:
+      0 35px 60px -12px rgba(0, 0, 0, 0.25),
+      0 16px 32px 0 rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   /* Performance optimizations for INP */
@@ -189,9 +603,9 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Smooth scrolling for better experience */
-  html {
-    scroll-behavior: smooth;
+  /* Variable global para altura del header calculada por JS */
+  :root {
+    --header-height: 0px;
   }
 
   /* Accessibility: Respect user's motion preferences */
@@ -248,4 +662,62 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  /* Logo bounce animation */
+  .animate-logo-bounce {
+    animation: logo-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* Forzar Montserrat en todos los botones - Máxima prioridad */
+button,
+a[role="button"],
+[role="button"],
+.btn,
+button *,
+a[role="button"] *,
+[role="button"] * {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+/* Animaciones para el menú hamburguesa */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.4;
+  }
+}
+
+/* Estilos para elementos del menú hamburguesa */
+.hamburger-menu-item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu-item:hover {
+  transform: translateX(10px);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.hamburger-menu-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: width 0.3s ease;
+}
+
+.hamburger-menu-item:hover::before {
+  width: 15px;
 }

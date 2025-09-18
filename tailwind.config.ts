@@ -19,6 +19,8 @@ export default {
     },
     extend: {
       fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+        merriweather: ["Merriweather", "serif"],
         "space-grotesk": ["Space Grotesk", "sans-serif"],
         inter: ["Inter", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
@@ -69,8 +71,9 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         offwhite: {
-          DEFAULT: "#f4f4f5",
-          light: "#fafafa",
+          DEFAULT: "#F5F4F2",
+          light: "#F5F4F2",
+          cararra: "#F5F4F2",
         },
       },
       backdropBlur: {

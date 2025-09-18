@@ -44,7 +44,7 @@ Disallow: /dev/
 
 # Allow important SEO pages
 Allow: /servicios/
-Allow: /proyectos/
+Allow: /nuestros-trabajos/
 Allow: /la-empresa/
 Allow: /contacto/
 
