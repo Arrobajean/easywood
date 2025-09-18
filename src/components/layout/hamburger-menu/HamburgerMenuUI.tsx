@@ -4,6 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { SiTiktok, SiInstagram, SiYoutube } from "react-icons/si";
 
 interface HamburgerMenuUIProps {
   isOpen: boolean;
@@ -133,102 +134,6 @@ export const HamburgerMenuUI = ({
             transition: "all 0.3s ease",
           }}
         >
-          {/* Elementos decorativos - patrones geométricos */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              overflow: "hidden",
-              pointerEvents: "none",
-            }}
-            aria-hidden="true"
-          >
-            {/* Patrón de círculos en la esquina superior izquierda */}
-            <div
-              style={{
-                position: "absolute",
-                top: "-50px",
-                left: "-50px",
-                width: "200px",
-                height: "200px",
-                opacity: 0.05,
-              }}
-            >
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    width: `${8 + i * 2}px`,
-                    height: `${8 + i * 2}px`,
-                    borderRadius: "50%",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    top: `${i * 15}px`,
-                    left: `${i * 12}px`,
-                  }}
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-
-            {/* Patrón de líneas en la esquina inferior derecha */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: "-30px",
-                right: "-30px",
-                width: "180px",
-                height: "180px",
-                opacity: 0.04,
-              }}
-            >
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "absolute",
-                    width: `${60 + i * 10}px`,
-                    height: "1px",
-                    backgroundColor: "rgba(255, 255, 255, 0.4)",
-                    top: `${i * 20}px`,
-                    right: `${i * 5}px`,
-                    transform: `rotate(${i * 15}deg)`,
-                    transformOrigin: "right center",
-                  }}
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-
-            {/* Elementos flotantes sutiles */}
-            <div
-              style={{
-                position: "absolute",
-                top: "20%",
-                right: "10%",
-                width: "4px",
-                height: "4px",
-                borderRadius: "50%",
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                animation: "float 6s ease-in-out infinite",
-              }}
-              aria-hidden="true"
-            />
-            <div
-              style={{
-                position: "absolute",
-                top: "60%",
-                left: "15%",
-                width: "6px",
-                height: "6px",
-                borderRadius: "50%",
-                backgroundColor: "rgba(255, 255, 255, 0.08)",
-                animation: "float 8s ease-in-out infinite reverse",
-              }}
-              aria-hidden="true"
-            />
-          </div>
-
           {/* Menú de navegación */}
           <div
             id="hamburger-menu-description"
@@ -299,7 +204,7 @@ export const HamburgerMenuUI = ({
               ))}
             </nav>
 
-            {/* Información de contacto en la parte inferior */}
+            {/* Redes sociales en la parte inferior */}
             <div
               style={{
                 position: "absolute",
@@ -309,22 +214,93 @@ export const HamburgerMenuUI = ({
                 textAlign: "center",
               }}
               role="complementary"
-              aria-label="Información de contacto"
+              aria-label="Redes sociales"
             >
-              <a
-                href="tel:+34612345678"
+              {/* CTA breve */}
+              <p
                 style={{
                   color: "white",
-                  textDecoration: "none",
-                  fontSize: "clamp(16px, 4vw, 20px)",
+                  fontSize: "clamp(14px, 3vw, 16px)",
                   fontWeight: "500",
+                  marginBottom: "16px",
                   opacity: 0.9,
                 }}
-                className="hover:opacity-100 transition-opacity duration-200"
-                aria-label="Llamar al +34 612 345 678"
               >
-                +34 612 345 678
-              </a>
+                Síguenos en nuestras redes
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "16px",
+                }}
+              >
+                <a
+                  href="https://www.instagram.com/easywood_es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  className="hover:bg-[#74bd51] hover:scale-110"
+                  aria-label="Visitar perfil de Instagram de EasyWood (se abre en ventana nueva)"
+                >
+                  <SiInstagram size={20} aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@easywood_es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  className="hover:bg-[#74bd51] hover:scale-110"
+                  aria-label="Visitar perfil de TikTok de EasyWood (se abre en ventana nueva)"
+                >
+                  <SiTiktok size={20} aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@easywood_es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    textDecoration: "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  className="hover:bg-[#74bd51] hover:scale-110"
+                  aria-label="Visitar canal de YouTube de EasyWood (se abre en ventana nueva)"
+                >
+                  <SiYoutube size={20} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

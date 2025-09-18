@@ -9,7 +9,7 @@ import { HamburgerMenu } from "./hamburger-menu";
 const SkipLink = () => (
   <a
     href="#main-content"
-    className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded-md focus:shadow-lg"
+    className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded-md focus:shadow-lg"
   >
     Saltar al contenido principal
   </a>
@@ -53,11 +53,11 @@ const Navigation = memo(() => {
         ref={navRef as any}
         role="navigation"
         aria-label="Navegación principal"
-        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 border-b ${
+        className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 border-b header-fixed ${
           isNavVisible ? "glass-nav-dark shadow-glass" : "bg-transparent"
-        } ${isNavVisible ? "border-black/20" : "border-transparent"}`}
+        } ${isNavVisible ? "border-black/20" : "border-transparent"} m-0 p-0`}
       >
-        <div className="container mx-auto px-6 py-4">
+        <div className="w-full px-6 py-4">
           <div className="flex items-center justify-between">
             <Link
               to="/"

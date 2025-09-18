@@ -137,6 +137,8 @@
   html,
   body {
     overflow-x: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   body {
@@ -222,6 +224,13 @@
 
   .glass-nav-dark {
     @apply backdrop-blur-xl bg-black/70 border-b border-black/20;
+  }
+
+  /* Force header to stick to top */
+  .header-fixed {
+    top: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
 
