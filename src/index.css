@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    /* Fondo general más suave */
+    --background: 240 5% 98%;
+    /* #fafafa */
+    --foreground: 0 0% 0%;
+
+    --card: 240 4% 96%;
+    /* #f4f4f5 */
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 0 0% 0%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  /* Configuración de fuentes para diferentes elementos */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-space-grotesk;
+  }
+
+  p,
+  span,
+  div,
+  li {
+    @apply font-inter;
+  }
+
+  button,
+  .btn {
+    @apply font-manrope;
+  }
+}
+
+@layer components {
+
+  /* Glass effect utilities */
+  .glass {
+    @apply backdrop-blur-md bg-white/80 border border-white/20;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-md bg-black/20 border border-white/10;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg bg-white/60 border border-white/20 shadow-lg;
+  }
+
+  .glass-nav {
+    @apply backdrop-blur-xl bg-white/90 border-b border-white/20;
+  }
+
+  .glass-button {
+    @apply backdrop-blur-md bg-white/20 border border-white/30 hover:bg-white/30 transition-all duration-300;
+  }
+
+  .glass-button-dark {
+    @apply backdrop-blur-md bg-black/80 border border-black/30 hover:bg-black/90 transition-all duration-300 shadow-glass;
+  }
+
+  .glass-footer {
+    @apply backdrop-blur-sm bg-white/40 border-t border-white/20;
+  }
+
+  .glass-cta {
+    @apply backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300 shadow-glass hover:shadow-glass-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Glass shadows */
+  .shadow-glass {
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-glass-lg {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  .shadow-glass-xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Performance optimizations for INP */
+  .optimize-interactions {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  .fast-transitions {
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+
+  .touch-optimized {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Smooth scrolling for better experience */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Accessibility: Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-scale,
+    .transition-all,
+    .transition-colors,
+    .transition-transform,
+    .transition-opacity {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* Keep essential transitions for focus states */
+    *:focus-visible {
+      transition: outline 0.15s ease-out !important;
+    }
+  }
+
+  /* Enhanced focus indicators for better accessibility */
+  .focus-enhanced:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Ensure minimum touch target size (44x44px) */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Line clamp utilities for text truncation */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}

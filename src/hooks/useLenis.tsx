@@ -1,0 +1,7 @@
+// Hook deshabilitado - usando scroll nativo del navegador
+const useLenis = () => {
+  // No hacer nada - scroll nativo
+  return null;
+};
+
+export default useLenis;

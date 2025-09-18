@@ -1,0 +1,195 @@
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness", "HomeAndConstructionBusiness"],
+  "name": "LLEMY Reformas & Construcciones",
+  "alternateName": "LLEMY Reformas",
+  "description": "Empresa de reformas integrales en Madrid con más de 25 años de experiencia. Reformas de viviendas, locales y oficinas. Calidad, garantía y presupuesto gratuito.",
+  "url": "https://llemy.com/",
+  "logo": "https://llemy.com/images/logo/LOGO%20LLEMY%20Vector%20VERDE.png",
+  "image": "https://llemy.com/images/logo/LOGO%20LLEMY%20Vector%20VERDE.png",
+  "foundingDate": "1999",
+  "numberOfEmployees": "10-50",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Marqués de Zafra 25",
+    "addressLocality": "Madrid",
+    "addressRegion": "Madrid",
+    "postalCode": "28010",
+    "addressCountry": "ES"
+  },
+  "telephone": "+34 919 930 664",
+  "email": "info@llemy.com",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Madrid",
+      "description": "Capital de España, centro de operaciones principal"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.4168,
+    "longitude": -3.7038
+  },
+  "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-14:00",
+  "priceRange": "€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de Reformas en Madrid",
+    "description": "Catálogo completo de servicios de reformas integrales y especializadas",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Reformas Integrales",
+          "description": "Reformas completas de viviendas, locales y oficinas en Madrid y alrededores",
+          "category": "Reformas Completas",
+          "serviceType": "Reforma Integral"
+        },
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Presupuesto gratuito para reformas integrales"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Reformas de Cocinas",
+          "description": "Diseño e instalación de cocinas modernas y funcionales",
+          "category": "Reformas Especializadas",
+          "serviceType": "Cocina"
+        },
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Presupuesto gratuito para reformas de cocina"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Reformas de Baños",
+          "description": "Reformas completas de baños con acabados de calidad",
+          "category": "Reformas Especializadas",
+          "serviceType": "Baño"
+        },
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Presupuesto gratuito para reformas de baño"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Instalación Eléctrica",
+          "description": "Instalaciones eléctricas completas y modernizaciones",
+          "category": "Instalaciones",
+          "serviceType": "Electricidad"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fontanería",
+          "description": "Instalaciones de fontanería y saneamiento",
+          "category": "Instalaciones",
+          "serviceType": "Fontanería"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Alisado y Pintura",
+          "description": "Acabados de paredes y techos con técnicas modernas",
+          "category": "Acabados",
+          "serviceType": "Pintura"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Suelos y Puertas",
+          "description": "Instalación de suelos y carpintería de calidad",
+          "category": "Acabados",
+          "serviceType": "Suelos"
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.facebook.com/llemyreformas/",
+    "https://www.instagram.com/llemyreformas/"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "María García"
+      },
+      "reviewBody": "El resultado superó todas nuestras expectativas. El equipo fue muy profesional y cumplió todos los plazos acordados.",
+      "itemReviewed": {
+        "@type": "Service",
+        "name": "Reforma Integral en Madrid"
+      }
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "José Martínez"
+      },
+      "reviewBody": "La cocina quedó espectacular. Ahora tenemos mucho más espacio y es muy funcional para cocinar.",
+      "itemReviewed": {
+        "@type": "Service",
+        "name": "Reforma de Cocina en Madrid Centro"
+      }
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+34 919 930 664",
+    "contactType": "customer service",
+    "areaServed": "ES",
+    "availableLanguage": "Spanish"
+  },
+  "knowsAbout": [
+    "Reformas integrales",
+    "Diseño de interiores",
+    "Construcción",
+    "Rehabilitación",
+    "Instalaciones eléctricas",
+    "Fontanería",
+    "Albañilería",
+    "Carpintería",
+    "Pintura",
+    "Suelos"
+  ],
+  "award": [
+    "25+ años de experiencia en el sector",
+    "Certificación de calidad en reformas",
+    "Garantía de 5 años en todas las obras"
+  ]
+}
