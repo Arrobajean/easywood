@@ -116,7 +116,7 @@ const Home = () => {
           })}
         </script>
       </Helmet>
-      <div className="min-h-dvh">
+      <div className="min-h-screen">
         <HeroSection />
         <AboutUsSection />
         <ValuesSection />

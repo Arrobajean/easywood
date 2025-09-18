@@ -13,7 +13,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative h-dvh overflow-hidden"
+      className="relative h-screen overflow-hidden"
       role="banner"
       aria-label="Sección principal"
     >

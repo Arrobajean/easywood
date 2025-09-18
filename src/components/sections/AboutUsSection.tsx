@@ -104,10 +104,10 @@ const AboutUsSection = () => {
                 </p>
               </div>
             </div>
-            <div className="mt-8 flex justify-center lg:justify-start">
-              <Link to="/trabajos">
+            <div className="mt-8 flex justify-center">
+              <Link to="/nuestros-trabajos">
                 <Button className="group flex items-center glass-button-white-bg px-8 py-3 rounded-lg border-0">
-                  <span>Descubre nuestros trabajos en madera</span>
+                  <span>Ver nuestros trabajos</span>
                   <ArrowRight
                     size={22}
                     className="ml-2 sm:opacity-0 sm:translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 opacity-100 translate-x-0 transition-all duration-300 ease-out"
@@ -118,98 +118,100 @@ const AboutUsSection = () => {
           </AnimatedSection>
 
           <AnimatedSection animation="slideRight" delay={0.3}>
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="flex gap-4"
-              columnClassName="masonry-column"
-            >
-              {[
-                {
-                  src: "/images/UI/landing6.jpeg",
-                  alt: "Suelo de madera herringbone con acabado brillante y elegante.",
-                  description:
-                    "Instalación de parquet herringbone con acabado profesional que realza la belleza natural de la madera.",
-                  style: "tall", // Imagen alta
-                },
-                {
-                  src: "/images/UI/landing3.jpeg",
-                  alt: "Suelo de madera con patrón basketweave en tonos cálidos.",
-                  description:
-                    "Parquet con diseño basketweave que combina diferentes tonos de madera para crear un ambiente acogedor.",
-                  style: "wide", // Imagen ancha
-                },
-                {
-                  src: "/images/UI/landing2.jpeg",
-                  alt: "Suelo de madera con diseño moderno y líneas rectas.",
-                  description:
-                    "Instalación moderna de tarima con acabados de alta calidad y diseño contemporáneo.",
-                  style: "square", // Imagen cuadrada
-                },
-                {
-                  src: "/images/UI/landing1.jpeg",
-                  alt: "Suelo de madera natural con vetas visibles y acabado mate.",
-                  description:
-                    "Suelo de madera natural con tratamiento especial que preserva la belleza original de las vetas.",
-                  style: "medium", // Imagen mediana
-                },
-              ].map(({ src, alt, description, style }, idx) => (
-                <motion.div
-                  key={idx}
-                  className={`glass-card rounded-2xl shadow-glass mb-4 overflow-hidden cursor-pointer relative group ${
-                    style === "tall"
-                      ? "h-80"
-                      : style === "wide"
-                      ? "h-48"
-                      : style === "square"
-                      ? "h-64"
-                      : "h-56"
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <img
-                    src={src}
-                    alt={alt}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-sm font-medium leading-tight">
-                      {description}
-                    </p>
-                  </div>
-                  {style === "tall" && (
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-xs font-semibold text-gray-800">
-                        Herringbone
-                      </span>
+            <div className="masonry-container">
+              <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="flex gap-4"
+                columnClassName="masonry-column"
+              >
+                {[
+                  {
+                    src: "/images/UI/landing6.jpeg",
+                    alt: "Suelo de madera herringbone con acabado brillante y elegante.",
+                    description:
+                      "Instalación de parquet herringbone con acabado profesional que realza la belleza natural de la madera.",
+                    style: "tall", // Imagen alta
+                  },
+                  {
+                    src: "/images/UI/landing3.jpeg",
+                    alt: "Suelo de madera con patrón basketweave en tonos cálidos.",
+                    description:
+                      "Parquet con diseño basketweave que combina diferentes tonos de madera para crear un ambiente acogedor.",
+                    style: "wide", // Imagen ancha
+                  },
+                  {
+                    src: "/images/UI/landing2.jpeg",
+                    alt: "Suelo de madera con diseño moderno y líneas rectas.",
+                    description:
+                      "Instalación moderna de tarima con acabados de alta calidad y diseño contemporáneo.",
+                    style: "square", // Imagen cuadrada
+                  },
+                  {
+                    src: "/images/UI/landing1.jpeg",
+                    alt: "Suelo de madera natural con vetas visibles y acabado mate.",
+                    description:
+                      "Suelo de madera natural con tratamiento especial que preserva la belleza original de las vetas.",
+                    style: "medium", // Imagen mediana
+                  },
+                ].map(({ src, alt, description, style }, idx) => (
+                  <motion.div
+                    key={idx}
+                    className={`glass-card rounded-2xl shadow-glass mb-4 overflow-hidden cursor-pointer relative group ${
+                      style === "tall"
+                        ? "h-80"
+                        : style === "wide"
+                        ? "h-48"
+                        : style === "square"
+                        ? "h-64"
+                        : "h-56"
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <img
+                      src={src}
+                      alt={alt}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="text-white text-sm font-medium leading-tight">
+                        {description}
+                      </p>
                     </div>
-                  )}
-                  {style === "wide" && (
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-xs font-semibold text-gray-800">
-                        Basketweave
-                      </span>
-                    </div>
-                  )}
-                  {style === "square" && (
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-xs font-semibold text-gray-800">
-                        Moderno
-                      </span>
-                    </div>
-                  )}
-                  {style === "medium" && (
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
-                      <span className="text-xs font-semibold text-gray-800">
-                        Natural
-                      </span>
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </Masonry>
+                    {style === "tall" && (
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                        <span className="text-xs font-semibold text-gray-800">
+                          Herringbone
+                        </span>
+                      </div>
+                    )}
+                    {style === "wide" && (
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                        <span className="text-xs font-semibold text-gray-800">
+                          Basketweave
+                        </span>
+                      </div>
+                    )}
+                    {style === "square" && (
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                        <span className="text-xs font-semibold text-gray-800">
+                          Moderno
+                        </span>
+                      </div>
+                    )}
+                    {style === "medium" && (
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1">
+                        <span className="text-xs font-semibold text-gray-800">
+                          Natural
+                        </span>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </Masonry>
+            </div>
           </AnimatedSection>
         </div>
       </div>
