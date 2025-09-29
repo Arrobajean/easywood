@@ -1,12 +1,12 @@
 {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness", "HomeAndConstructionBusiness"],
-  "name": "LLEMY Reformas & Construcciones",
-  "alternateName": "LLEMY Reformas",
+  "name": "Easywood",
+  "alternateName": "Easywood Suelos",
   "description": "Empresa de reformas integrales en Madrid con más de 25 años de experiencia. Reformas de viviendas, locales y oficinas. Calidad, garantía y presupuesto gratuito.",
-  "url": "https://llemy.com/",
-  "logo": "https://llemy.com/images/logo/LOGO%20LLEMY%20Vector%20VERDE.png",
-  "image": "https://llemy.com/images/logo/LOGO%20LLEMY%20Vector%20VERDE.png",
+  "url": "https://easywood.es/",
+  "logo": "https://easywood.es/images/logo/easywood_logo.png",
+  "image": "https://easywood.es/images/logo/easywood_logo.png",
   "foundingDate": "1999",
   "numberOfEmployees": "10-50",
   "address": {
@@ -18,7 +18,7 @@
     "addressCountry": "ES"
   },
   "telephone": "+34 919 930 664",
-  "email": "info@llemy.com",
+  "email": "info@easywood.es",
   "areaServed": [
     {
       "@type": "City",
@@ -122,8 +122,8 @@
     ]
   },
   "sameAs": [
-    "https://www.facebook.com/llemyreformas/",
-    "https://www.instagram.com/llemyreformas/"
+    "https://www.instagram.com/easywood_es/",
+    "https://www.tiktok.com/@easywood_es"
   ],
   "aggregateRating": {
     "@type": "AggregateRating",

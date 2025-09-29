@@ -4,13 +4,13 @@ import BeforeAfterSection from "./BeforeAfterSection";
 const BeforeAfterExample = () => {
   // Ejemplo de uso del componente BeforeAfterSection
   const beforeImages = [
-    "/images/Fotos Obras LLemy/Pirineos/pirineos1.JPG",
-    "/images/Fotos Obras LLemy/Pirineos/pirineos2.JPG",
+    "/images/trabajos/madrid/pirineos1.jpg",
+    "/images/trabajos/madrid/pirineos2.jpg",
   ];
 
   const afterImages = [
-    "/images/Fotos Obras LLemy/Pirineos/pirineos3.JPG",
-    "/images/Fotos Obras LLemy/Pirineos/pirineos4.JPG",
+    "/images/trabajos/madrid/pirineos3.jpg",
+    "/images/trabajos/madrid/pirineos4.jpg",
   ];
 
   return (

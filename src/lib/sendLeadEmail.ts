@@ -37,7 +37,7 @@ export async function sendLeadEmail(lead: {
     port: 465, // 465 para SSL, 587 para TLS
     secure: true, // true para 465, false para 587
     auth: {
-      user: process.env.IONOS_USER || "info@llemy.com", // Mejor usar variables de entorno
+      user: process.env.IONOS_USER || "info@easywood.es", // Mejor usar variables de entorno
       pass: process.env.IONOS_PASS || "TU_CONTRASEÑA", // Mejor usar variables de entorno
     },
   });
@@ -45,8 +45,8 @@ export async function sendLeadEmail(lead: {
   const subject = lead.tipoReforma
     ? `Nuevo lead de contacto: ${lead.nombre}`
     : `Nuevo lead de callback: ${lead.name}`;
-  const to = "info@llemy.com";
-  const from = process.env.IONOS_USER || "info@llemy.com";
+  const to = "info@easywood.es";
+  const from = process.env.IONOS_USER || "info@easywood.es";
   const text = `
     Nombre: ${lead.nombre || lead.name}
     Email: ${lead.email || "-"}

@@ -46,7 +46,7 @@ export const sendContactEmail = functions.firestore
     const data = snap.data();
     const mailOptions = {
       from: functions.config().gmail.email, // Remitente
-      to: "info@llemy.com", // Destinatarios
+      to: "info@easywood.es", // Destinatarios
       subject: "Nuevo contacto desde la web",
       text: `
         Nombre: ${data?.nombre || data?.name}
@@ -100,7 +100,7 @@ export const sendCallbackEmail = functions.firestore
     const data = snap.data();
     const mailOptions = {
       from: functions.config().gmail.email,
-      to: "info@llemy.com, hola@404studios.digital",
+      to: "info@easywood.es, hola@404studios.digital",
       subject: "Nuevo callback desde la web",
       text: `
         Nombre: ${data?.nombre || data?.name}

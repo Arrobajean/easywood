@@ -61,8 +61,8 @@ const ServicesSEO = () => (
         "@type": "WebPage",
         name: "Servicios de Reformas Integrales en Madrid | Easywood",
         description:
-          "LLEMY Reformas ofrece servicios completos de reformas en Madrid: reformas integrales, cocinas, baños, diseño de interiores, albañilería, electricidad, pintura y suelos.",
-        url: "https://llemy.com/servicios",
+          "Easywood ofrece servicios completos de reformas en Madrid: reformas integrales, cocinas, baños, diseño de interiores, albañilería, electricidad, pintura y suelos.",
+        url: "https://easywood.es/servicios",
         mainEntity: {
           "@type": "Service",
           name: "Servicios de Reformas Integrales en Madrid",

@@ -49,10 +49,10 @@ Allow: /la-empresa/
 Allow: /contacto/
 
 # Sitemap location
-Sitemap: https://llemy.com/sitemap.xml
+Sitemap: https://easywood.es/sitemap.xml
 
 # Crawl delay (optional, for very large sites)
 # Crawl-delay: 1
 
-# SEO Local: Empresa de reformas en Madrid
-# LLEMY Reformas - Reformas integrales en Madrid y alrededores
+# SEO Local: Empresa de suelos en Madrid
+# Easywood - Suelos de madera, tarima y parquet en Madrid

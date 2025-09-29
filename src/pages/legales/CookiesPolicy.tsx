@@ -297,7 +297,7 @@ const CookiesPolicy = () => {
             <p className="text-muted-foreground mb-6">
               Si tiene alguna pregunta sobre nuestra política de cookies, puede
               contactarnos en:{" "}
-              <a href="mailto:info@llemmy.es">info@llemmy.es</a>
+              <a href="mailto:info@easywood.es">info@easywood.es</a>
             </p>
 
             <h2 className="text-2xl font-semibold text-primary mb-4">
@@ -305,24 +305,22 @@ const CookiesPolicy = () => {
             </h2>
             <p className="text-muted-foreground mb-6">
               Le informamos que sus datos personales están incluidos en un
-              tratamiento, cuyo responsable es AHORRACORP S.L., operando bajo el
-              nombre comercial LLEMY Reformas y Construcciones. Los datos se
-              recopilan con la finalidad de gestionar comercial y
-              administrativamente la relación que, en su caso, nos une y de
-              informarle sobre productos, servicios o eventos de nuestra empresa
-              que pudieran ser de su interés, ya sea por medios tradicionales o
-              electrónicos. La legitimidad del tratamiento de sus datos se basa
-              en la ejecución de un contrato o en su consentimiento previo. Los
-              destinatarios de los datos serán únicamente otras empresas del
-              mismo grupo, en su caso, u otros terceros sobre los que recaiga
-              algún tipo de obligación legal para su cesión. Los datos se
-              conservarán durante el periodo en que exista una relación
-              contractual y/o comercial establecida, o mientras no nos solicite
-              su eliminación. Usted podrá ejercitar los derechos de acceso,
-              rectificación, supresión, oposición, limitación del tratamiento y
-              portabilidad de sus datos, remitiendo una solicitud por escrito a
-              la dirección anteriormente indicada, acompañando un documento para
-              su identificación.
+              tratamiento, cuyo responsable es Easywood. Los datos se recopilan
+              con la finalidad de gestionar comercial y administrativamente la
+              relación que, en su caso, nos une y de informarle sobre productos,
+              servicios o eventos de nuestra empresa que pudieran ser de su
+              interés, ya sea por medios tradicionales o electrónicos. La
+              legitimidad del tratamiento de sus datos se basa en la ejecución
+              de un contrato o en su consentimiento previo. Los destinatarios de
+              los datos serán únicamente otras empresas del mismo grupo, en su
+              caso, u otros terceros sobre los que recaiga algún tipo de
+              obligación legal para su cesión. Los datos se conservarán durante
+              el periodo en que exista una relación contractual y/o comercial
+              establecida, o mientras no nos solicite su eliminación. Usted
+              podrá ejercitar los derechos de acceso, rectificación, supresión,
+              oposición, limitación del tratamiento y portabilidad de sus datos,
+              remitiendo una solicitud por escrito a la dirección anteriormente
+              indicada, acompañando un documento para su identificación.
             </p>
 
             <h2 className="text-2xl font-semibold text-primary mb-4">
