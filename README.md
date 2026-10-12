@@ -50,7 +50,7 @@ Sin tests automatizados. Verificacion actual: `npm run build` y `npm run lint`.
 
 ## Como se construyo
 
-Con honestidad: el historial muestra `Initial commit` seguido de `chore: bootstrap from LLEMY template (clean init without history)`, y `lovable-tagger` sigue en devDependencies, asi que la base proviene de una plantilla/generador (Lovable/LLEMY). Trabajo propio posterior: adaptacion completa a Easywood (contenidos de reformas y tarimas, datos de servicios y proyectos, SEO local para easywood.es, integracion Firebase/EmailJS, formularios con honeypot, reglas de Firestore y optimizaciones movil).
+Con honestidad: el repositorio parte de una plantilla de arranque (starter Vite + React + shadcn/ui), importada al inicio del historial (`Initial commit` seguido de `chore: bootstrap from ... template`). Trabajo propio posterior: adaptacion completa a Easywood (contenidos de reformas y tarimas, datos de servicios y proyectos, SEO local para easywood.es, integracion Firebase/EmailJS, formularios con honeypot, reglas de Firestore y optimizaciones movil).
 
 ## Licencia
 
