@@ -163,8 +163,8 @@ export const projects: Project[] = [
   {
     id: 5,
     slug: "instalacion-parquet-roble-dummy",
-    image: "/placeholder.svg",
-    images: ["/placeholder.svg"],
+    image: "/images/trabajos/Villanueva/instalacion-vivienda-tarima-composite.jpg",
+    images: ["/images/trabajos/Villanueva/instalacion-vivienda-tarima-composite.jpg"],
     title: "Instalación de parquet roble europeo",
     type: "Instalación de suelos",
     category: "instalacion",
@@ -188,8 +188,8 @@ export const projects: Project[] = [
   {
     id: 6,
     slug: "aceitado-pulido-parquet-dummy",
-    image: "/placeholder.svg",
-    images: ["/placeholder.svg"],
+    image: "/images/trabajos/pozuelo/Lijado-y-barnizado-de-tarima-en-Pozuelo-1.jpg",
+    images: ["/images/trabajos/pozuelo/Lijado-y-barnizado-de-tarima-en-Pozuelo-1.jpg"],
     title: "Pulido y aceitado de parquet",
     type: "Mantenimiento de suelos",
     category: "lijado-barnizado",
